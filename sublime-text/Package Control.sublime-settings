@@ -1,0 +1,19 @@
+{
+	"installed_packages":
+	[
+		"AngularJS",
+		"BracketHighlighter",
+		"HTML-CSS-JS Prettify",
+		"Javascript Beautify",
+		"jQuery",
+		"LiveStyle",
+		"MarkdownEditing",
+		"Missing Palette Commands",
+		"SCSS",
+		"SublimeLinter",
+		"SublimeLinter-contrib-scss-lint",
+		"SublimeLinter-html-tidy",
+		"SublimeLinter-jshint",
+		"SyncedSideBar"
+	]
+}
