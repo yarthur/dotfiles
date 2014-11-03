@@ -1,0 +1,7 @@
+[core]
+	excludesfile = /Users/mac86809/.gitignore_global
+[user]
+	name = 'John Arthur'
+	email = 'john@jtarthur.net'
+[push]
+	default = simple
