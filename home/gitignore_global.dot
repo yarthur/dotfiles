@@ -37,3 +37,8 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Software generated files #
+############################
+# Vim cache file
+*.swp
