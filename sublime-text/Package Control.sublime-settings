@@ -1,14 +1,24 @@
 {
+	"in_process_packages":
+	[
+	],
+	"installed_dependencies":
+	[
+		"0_package_control_loader",
+		"bz2"
+	],
 	"installed_packages":
 	[
 		"AngularJS",
 		"BracketHighlighter",
+		"GitGutter",
 		"HTML-CSS-JS Prettify",
 		"Javascript Beautify",
 		"jQuery",
 		"LiveStyle",
 		"MarkdownEditing",
 		"Missing Palette Commands",
+		"Package Control",
 		"SCSS",
 		"SublimeLinter",
 		"SublimeLinter-contrib-scss-lint",

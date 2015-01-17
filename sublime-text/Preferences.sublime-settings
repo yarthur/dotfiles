@@ -178,6 +178,7 @@
     //  Set to true to ensure the last line of the file ends in a newline
     //  character when saving
     // "ensure_newline_at_eof_on_save": false,
+    "ensure_newline_at_eof_on_save": true,
 
     //  Set to true to automatically save files when switching to a different file
     //  or application
@@ -349,6 +350,11 @@
     //  List any packages to ignore here. When removing entries from this list,
     //  a restart may be required if the package contains plugins.
     // "ignored_packages": ["Vintage"]
+    "ignored_packages":
+    [
+        "Vintage",
+        "Markdown"
+    ],
 }
 
 
