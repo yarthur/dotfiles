@@ -15,6 +15,7 @@
     // "font_face": "",
     "font_face": "Inconsolata",
     // "font_size": 10,
+    "font_size": 16,
 
     //  Valid options are "no_bold", "no_italic", "no_antialias", "gray_antialias",
     //  "subpixel_antialias", "no_round" (OS X only) and "directwrite" (Windows only)
