@@ -14,9 +14,11 @@
 		"MarkdownEditing",
 		"Missing Palette Commands",
 		"Package Control",
+		"PHP-Twig",
 		"SCSS",
 		"SublimeLinter",
 		"SublimeLinter-contrib-scss-lint",
+		"SublimeLinter-contrib-twiglint",
 		"SublimeLinter-html-tidy",
 		"SublimeLinter-jshint",
 		"SyncedSideBar"
