@@ -42,3 +42,6 @@ Thumbs.db
 ############################
 # Vim cache file
 *.swp
+
+# Sublime Text
+*.sublime-workspace
