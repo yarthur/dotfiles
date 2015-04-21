@@ -32,3 +32,15 @@ set number
 
 " Allow hidden buffers, don't limit to 1 file per window/split
 set hidden
+
+"""""""""""""""""""""
+" Personal Settings "
+"""""""""""""""""""""
+" Enable Unicode
+set encoding=utf-8
+
+" Show whitespace
+set list listchars=eol:¶,tab:→\ ,trail:·
+
+" Set Tab width to 4 space
+set tabstop=4
