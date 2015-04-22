@@ -1,3 +1,49 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" All other plugins
+" Theme
+Plugin 'altercation/vim-colors-solarized'
+
+" Syntax
+Plugin 'plasticboy/vim-markdown'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'elzr/vim-json'
+
+" Functionality
+Plugin 'ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'surround.vim'
+Plugin 'commentary.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+
 " Cribbed from https://gist.githubusercontent.com/benmccormick/4e4bc44d8135cfc43fc3/raw/41cb8709d72a56bf0be66d4294135c46613c312c/minimal.vim
 " A minimal vimrc for new vim users to start with.
 "
@@ -16,7 +62,7 @@
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
-set nocompatible
+" set nocompatible
 
 " Make backspace behave in a sane manner.
 set backspace=indent,eol,start
@@ -25,7 +71,7 @@ set backspace=indent,eol,start
 syntax on
 
 " Enable file type detection and do language-dependent indenting.
-filetype plugin indent on
+" filetype plugin indent on
 
 " Show line numbers
 set number
