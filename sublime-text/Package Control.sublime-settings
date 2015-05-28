@@ -21,6 +21,7 @@
 		"SublimeLinter-contrib-twiglint",
 		"SublimeLinter-html-tidy",
 		"SublimeLinter-jshint",
-		"SyncedSideBar"
+		"SyncedSideBar",
+		"Twig"
 	]
 }

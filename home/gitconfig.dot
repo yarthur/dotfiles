@@ -1,13 +1,16 @@
+[color]
+	ui = true
 [core]
-	excludesfile = ~/.gitignore_global
+	editor = vim
+	excludesfile = /Users/johnarthur/.gitignore_global
 [user]
 	name = 'John Arthur'
 	email = 'john@jtarthur.net'
 [push]
 	default = simple
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	cmd = /Applications/DeltaWalker.app/Contents/MacOS/Deltawalker \"$REMOTE\" \"$LOCAL\" -mi -pwd=\"`pwd`\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/DeltaWalker.app/Contents/MacOS/Deltawalker \"$REMOTE\" \"$LOCAL\" \"$BASE\"  -merged=\"$MERGED\" -mi -pwd=\"`pwd`\"
 	trustExitCode = true
