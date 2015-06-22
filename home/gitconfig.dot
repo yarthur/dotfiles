@@ -12,5 +12,5 @@
 	cmd = /Applications/DeltaWalker.app/Contents/MacOS/Deltawalker \"$REMOTE\" \"$LOCAL\" -mi -pwd=\"`pwd`\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/DeltaWalker.app/Contents/MacOS/Deltawalker \"$REMOTE\" \"$LOCAL\" \"$BASE\"  -merged=\"$MERGED\" -mi -pwd=\"`pwd`\"
+	cmd = /Applications/DeltaWalker.app/Contents/MacOS/Deltawalker \"$LOCAL\" \"$REMOTE\" \"$BASE\" -merged=\"$MERGED\" -mi -pwd=\"`pwd`\"
 	trustExitCode = true
