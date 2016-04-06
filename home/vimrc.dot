@@ -41,6 +41,9 @@ syntax on
 " Show line numbers
 set number
 
+" Show relative line numbers
+set relativenumber
+
 " Allow hidden buffers, don't limit to 1 file per window/split
 set hidden
 
@@ -53,5 +56,11 @@ set encoding=utf-8
 " Show whitespace
 set list listchars=eol:¶,tab:→\ ,trail:·
 
+" Use Spaces instead of Tabs
+set expandtab
+
 " Set Tab width to 4 space
 set tabstop=4
+
+" Launch .md file in Marked
+nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
