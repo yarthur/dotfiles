@@ -4,13 +4,17 @@
 	editor = vim
 	excludesfile = /Users/johnarthur/.gitignore_global
 [user]
-	name = 'John Arthur'
-	email = 'john@jtarthur.net'
+	name = John Arthur
+	email = john@jtarthur.net
 [push]
 	default = simple
 [difftool "sourcetree"]
 	cmd = /Applications/DeltaWalker.app/Contents/MacOS/Deltawalker \"$REMOTE\" \"$LOCAL\" -mi -pwd=\"`pwd`\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/DeltaWalker.app/Contents/MacOS/Deltawalker \"$LOCAL\" \"$REMOTE\" \"$BASE\" -merged=\"$MERGED\" -mi -pwd=\"`pwd`\"
+	cmd = /Applications/DeltaWalker.app/Contents/MacOS/Deltawalker \"$REMOTE\" \"$LOCAL\" \"$BASE\"  -merged=\"$MERGED\" -mi -pwd=\"`pwd`\"
 	trustExitCode = true
+[credential]
+	helper = osxkeychain
+[url "https://"]
+	insteadOf = git://

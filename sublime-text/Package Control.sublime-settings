@@ -1,4 +1,5 @@
 {
+	"bootstrapped": true,
 	"in_process_packages":
 	[
 	],
@@ -6,6 +7,7 @@
 	[
 		"AngularJS",
 		"BracketHighlighter",
+		"EditorConfig",
 		"GitGutter",
 		"HTML-CSS-JS Prettify",
 		"Javascript Beautify",
@@ -19,6 +21,7 @@
 		"SublimeLinter",
 		"SublimeLinter-contrib-scss-lint",
 		"SublimeLinter-contrib-twiglint",
+		"SublimeLinter-csslint",
 		"SublimeLinter-html-tidy",
 		"SublimeLinter-jshint",
 		"SyncedSideBar",

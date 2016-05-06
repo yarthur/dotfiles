@@ -16,6 +16,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'itchyny/lightline.vim'
 
 " Syntax
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'elzr/vim-json'
