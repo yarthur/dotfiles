@@ -1,3 +1,6 @@
+# Backup Directory
+backup/
+
 !phpStorm/*.jar
 
 # Vim directory -- track .vim files
