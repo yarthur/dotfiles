@@ -6,6 +6,3 @@ echo "=============================="
 brew install diff-so-fancy
 brew install git
 brew install git-flow
-brew install hub
-
-alias git=hub
