@@ -15,6 +15,7 @@ call plug#begin('~/.vim/plugged')
 " Theme/Appearance
 Plug 'altercation/vim-colors-solarized'
 Plug 'itchyny/lightline.vim'
+Plug 'ryanoasis/vim-devicons'
 
 " Syntax
 Plug 'editorconfig/editorconfig-vim'
