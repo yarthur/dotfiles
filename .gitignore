@@ -3,3 +3,10 @@ backup/
 
 !phpStorm/*.jar
 
+# Composer
+# Because we symlink the composer directory to ~, we don't want to cache all the things brought in via composer.
+composer/*
+# However, we do want the following files:
+!composer/install.sh
+!composer/composer.json
+!composer/config.json

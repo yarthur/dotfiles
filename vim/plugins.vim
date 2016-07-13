@@ -22,6 +22,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'elzr/vim-json'
+Plug 'lumiliet/vim-twig'
+
+" Linting/Syntax Checking
 Plug 'scrooloose/syntastic'
 
 " Functionality
@@ -40,3 +43,6 @@ call plug#end()
 
 " lightline
 source ~/.dotfiles/vim/lightline.vim
+
+" Syntastic
+source ~/.dotfiles/vim/syntastic.vim

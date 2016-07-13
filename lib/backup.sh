@@ -4,10 +4,10 @@ echo -e "\nCreating backup"
 echo "=============================="
 
 config_dir="$HOME/.dotfiles"
-backup_dir=$config_dir/.backup
+backup_dir=$config_dir/backup
 file_ext='.dot'
 
-if [ ! -d ".backup" ]; then
+if [ ! -d $backup_dir ]; then
 	echo "Creating backup directory at $backup_dir."
 
 	mkdir $backup_dir
@@ -24,3 +24,8 @@ for file in $linkables; do
 		mv $target $backup_dir
 	fi
 done
+
+if [ $1 ] && [ -e $1 ] && [ ! -h $1 ]; then
+	echo "backing up $1"
+	mv $1 $backup_dir
+fi
