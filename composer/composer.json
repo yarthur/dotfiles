@@ -1,5 +1,5 @@
 {
     "require": {
-        "asm89/twig-lint": "@stable"
+        "asm89/twig-lint": "*"
     }
 }

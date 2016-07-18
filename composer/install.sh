@@ -2,7 +2,7 @@
 
 config_files="$HOME/.dotfiles"
 
-echo -e "\n\nVim"
+echo -e "\n\nComposer"
 echo "=============================="
 
 brew install composer

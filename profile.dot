@@ -1,11 +1,2 @@
 PATH="/usr/local/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
-
-# PATH="/Applications/MAMP/bin/php/php5.3.29/bin:$PATH"
-
-if [ -f ~/.git-completion.bash ]; then
-	source ~/.git-completion.bash
-fi
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
