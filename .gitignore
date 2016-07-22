@@ -10,3 +10,9 @@ composer/*
 !composer/install.sh
 !composer/composer.json
 !composer/config.json
+
+# Neovim
+nvim/autoload
+nvim/backups
+nvim/plugged
+nvim/undo

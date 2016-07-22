@@ -2,7 +2,7 @@ set nocompatible              " be iMproved, required
 
 
 " load plugins from vundle
-source ~/.dotfiles/vim/plugins.vim
+source ~/.config/nvim/plugins.vim
 
 
 
@@ -50,6 +50,9 @@ set hidden
 """""""""""""""""""""
 " Personal Settings "
 """""""""""""""""""""
+" Save netrw history file to cache dir.
+let g:netrw_home=$XDG_CACHE_HOME.'/vim'
+
 " Enable Unicode
 set encoding=utf-8
 

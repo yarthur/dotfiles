@@ -49,7 +49,7 @@ ZSH_CUSTOM=$HOME/.dotfiles/zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew composer cp git git-flow laravel4 npm osx sublime sudo vundle)
+plugins=(brew composer cp git git-flow laravel4 npm nvim osx sublime sudo vundle)
 
 # User configuration
 
