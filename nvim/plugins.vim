@@ -16,6 +16,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Syntax
 Plug 'editorconfig/editorconfig-vim'
@@ -25,7 +27,6 @@ Plug 'elzr/vim-json'
 Plug 'lumiliet/vim-twig'
 
 " Linting/Syntax Checking
-" Plug 'scrooloose/syntastic'
 Plug 'neomake/neomake'
 
 " Functionality
@@ -50,11 +51,8 @@ set background=dark
 colorscheme solarized
 
 " lightline
-source ~/.config/nvim/lightline.vim
+source ~/.config/nvim/airline.vim
 
-" Syntastic
-" source ~/.config/nvim/syntastic.vim
-"
 " Neomake
 source ~/.config/nvim/neomake.vim
 
