@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
 
 echo -e "\n\nVim"
-echo "=============================="
+echo -e "=============================="
 
-echo "Installing Vim"
+if test ! $(which nvim); then
+	echo -e "Installing Neovim"
+	brew install neovim/neovim/neovim
 
-# Dev Tools
-brew install neovim/neovim/neovim
+	if [ ! -d ~/.config ]; then
+		mkdir ~/.config
+	fi
 
-if [ ! -d ~/.config ]; then
-	mkdir ~/.config
+	ln -s ~/.dotfiles/nvim ~/.config/nvim
 fi
 
-ln -s ~/.dotfiles/nvim ~/.config/nvim
-
-echo -e "Installing Plugins"
-
+echo -e "Installing/Upgrading Plugins"
 nvim +PlugInstall! +qall

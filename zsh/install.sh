@@ -1,14 +1,25 @@
 #!/usr/bin/env bash
 
 echo -e "\n\nZsh"
-echo "=============================="
+echo -e "=============================="
 
 if [ ! -e "$HOME/.oh-my-zsh" ]; then
-	echo "Installing Oh-My-Zsh"
+	echo -e "Installing Oh My Zsh"
 
-	brew install wget
+	wgetTest=false
+
+	if test ! $(which wget); then
+		wgetTest=true
+		brew install wget
+	fi
 
 	wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 
-	brew remove wget
+	if [ $wgetTest = true ]; then
+		brew remove wget
+	fi
+else
+	echo -e "Updating Oh My Zsh"
+
+env ZSH=$ZSH sh $ZSH/tools/upgrade.sh
 fi

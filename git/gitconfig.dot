@@ -19,3 +19,5 @@
 	helper = osxkeychain
 [commit]
 	template = ~/.stCommitMsg
+[url "https://"]
+	insteadOf = git://

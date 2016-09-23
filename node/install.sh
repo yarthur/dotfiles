@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
-if test ! $(which node); then
+echo -e "\n\nNode"
+echo -e "=============================="
+
+if test $(which node); then
+	echo -e "Removing global Node modules (for Hard Upgrade)."
+	npm uninstall -g csslint eslint grunt-cli wordflip
+else
+	echo -e "Installing Node."
 	brew install node
 fi
 
-npm install -g bower csslint fuck-you grunt-cli gulp jscs jshint wordflip
+echo -e "Installing global Node modules."
+npm install -g csslint eslint grunt-cli wordflip
