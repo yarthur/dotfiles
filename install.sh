@@ -10,6 +10,7 @@ installBrew(){
 		brew upgrade
 
 		echo -e "Removing unneeded packages."
+		brew cleanup
 	else
 		if [[ "$OSTYPE" = "darwin"* ]]; then
 			echo "Installing homebrew"
