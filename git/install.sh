@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo -e "\n\nInstalling Git and Related"
-echo "=============================="
+echo -e "=============================="
 
 if test ! $(which diff-so-fancy); then
 	echo -e "Installing diff-so-fancy."
