@@ -4,7 +4,7 @@ set nocompatible              " be iMproved, required
 " load plugins from vundle
 source ~/.config/nvim/plugins.vim
 
-
+source ~/.config/nvim/mappings.vim
 
 
 
@@ -54,7 +54,9 @@ set hidden
 let g:netrw_home=$XDG_CACHE_HOME.'/vim'
 
 " Enable Unicode
-set encoding=utf-8
+if !has('nvim')
+	set encoding=utf-8
+endif
 
 " Show whitespace
 set list listchars=eol:¶,tab:→\ ,trail:·
@@ -65,5 +67,16 @@ set expandtab
 " Set Tab width to 4 space
 set tabstop=4
 
-" Launch .md file in Marked
-nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
+
+
+
+"-------------------- AutoCommands --------------------"
+" Auto Source on saving a config file.
+" Hat tip [Jeffrey
+" Way](https://gist.github.com/JeffreyWay/9b034ee90346fbd05180)
+augroup autosourcing
+	autocmd!
+
+	" Source if any .vim file within ~/.dotfiles/vim is edited and saved.
+	autocmd BufWritePost ~/.dotfiles/nvim/*.vim source %
+augroup END

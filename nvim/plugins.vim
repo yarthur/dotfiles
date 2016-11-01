@@ -60,8 +60,12 @@ source ~/.config/nvim/airline.vim
 source ~/.config/nvim/neomake.vim
 
 " NERDTree
-"	Start with NERDTreeCWD when opening without a file
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTreeCWD | endif
-"	Close vim completely if nothing but NERDTree is open.
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup NERDTreeAU
+	autocmd!
+
+	"	Start with NERDTreeCWD when opening without a file
+	autocmd StdinReadPre * let s:std_in=1
+	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTreeCWD | endif
+	"	Close vim completely if nothing but NERDTree is open.
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
