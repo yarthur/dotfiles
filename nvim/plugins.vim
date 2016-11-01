@@ -30,7 +30,10 @@ Plug 'lumiliet/vim-twig'
 Plug 'neomake/neomake'
 
 " Functionality
+Plug 'garbas/vim-snipmate'
+Plug 'marcweber/vim-addon-mw-utils' " Required for garbas/vim-snipmate
 Plug 'scrooloose/nerdtree'
+Plug 'tomtom/tlib_vim' " Required for garbas/vim-snipmate
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
