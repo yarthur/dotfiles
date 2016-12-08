@@ -45,3 +45,6 @@ Thumbs.db
 
 # Sublime Text
 *.sublime-workspace
+
+# Ctags/Exuberant Tags
+tags

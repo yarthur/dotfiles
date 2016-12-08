@@ -19,28 +19,42 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Syntax
-Plug 'editorconfig/editorconfig-vim'
-Plug 'plasticboy/vim-markdown'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'elzr/vim-json'
-Plug 'lumiliet/vim-twig'
-
 " Linting/Syntax Checking
 Plug 'neomake/neomake'
 
 " Functionality
-Plug 'garbas/vim-snipmate'
-Plug 'marcweber/vim-addon-mw-utils' " Required for garbas/vim-snipmate
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree'
-Plug 'tomtom/tlib_vim' " Required for garbas/vim-snipmate
-Plug 'tpope/vim-surround'
+Plug 'sirver/ultisnips' " Required for tobys/pdv
+Plug 'tobys/pdv'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 
 " VCS
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" --- LANGUAGE-SPECIFIC --- "
+" JS/JSON
+Plug 'jelera/vim-javascript-syntax'
+Plug 'elzr/vim-json'
+
+" Markdown
+Plug 'plasticboy/vim-markdown'
+
+" PHP
+Plug 'stanangeloff/php.vim'
+Plug 'arnaud-lb/vim-php-namespace'
+
+" Twig
+Plug 'lumiliet/vim-twig'
+
+
+" --- OTHER --- "
+Plug 'tobyS/vmustache' " Required for tobys/pdv
 
 filetype plugin indent on                   " required!
 call plug#end()
@@ -69,3 +83,25 @@ augroup NERDTreeAU
 	"	Close vim completely if nothing but NERDTree is open.
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
+
+
+
+" vim-php-namespace
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+" Call function above in normal or insert mode to insert function above.
+augroup vimPhpNamespace
+	autocmd!
+	autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+	autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+augroup END
+
+
+" UltiSnips
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.dotfiles/nvim/UltiSnips']
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
