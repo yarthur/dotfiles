@@ -81,6 +81,11 @@ augroup END
 source ~/.config/nvim/neomake.vim
 
 
+" PDV (PHP Documentor for Vim)
+let g:pdv_template_dir = $HOME ."/.dotfiles/nvim/plugged/pdv/templates_snip"
+nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
+
+
 " Solarized
 set background=dark
 colorscheme solarized
