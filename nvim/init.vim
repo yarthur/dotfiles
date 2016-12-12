@@ -74,7 +74,11 @@ set cursorline
 " Should be bold, and the same color as the rest of the column.
 highlight CursorLineNr term=bold ctermbg=0
 
-"
+" Set highlighting for tab and line-end
+" Should resemble comments -not bold, low contrast, no background.
+highlight NonText cterm=NONE ctermfg=10 ctermbg=NONE  " EOL
+highlight SpecialKey cterm=NONE ctermfg=10 ctermbg=NONE  " Tab
+
 
 
 "-------------------- AutoCommands --------------------"
