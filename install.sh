@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#j!/usr/bin/env bash
 installBrew(){
 	echo -e "\n\n*Brew"
 	echo -e "=============================="
@@ -29,6 +29,7 @@ installBrew(){
 
 		echo -e "Installing CLI Tools"
 		brew install ack z
+		brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 	fi
 }
 
