@@ -70,6 +70,12 @@ set tabstop=4
 " Highlight current column
 set cursorline
 
+" Set highlighting settings for Cursor Line Number
+" Should be bold, and the same color as the rest of the column.
+highlight CursorLineNr term=bold ctermbg=0
+
+"
+
 
 "-------------------- AutoCommands --------------------"
 " Auto Source on saving a config file.
