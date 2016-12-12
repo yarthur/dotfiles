@@ -67,7 +67,8 @@ set expandtab
 " Set Tab width to 4 space
 set tabstop=4
 
-
+" Highlight current column
+set cursorline
 
 
 "-------------------- AutoCommands --------------------"
