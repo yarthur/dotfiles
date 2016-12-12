@@ -79,5 +79,5 @@ augroup autosourcing
 	autocmd!
 
 	" Source if any .vim file within ~/.dotfiles/vim is edited and saved.
-	autocmd BufWritePost ~/.dotfiles/nvim/*.vim source %
+	autocmd BufWritePost ~/.dotfiles/nvim/*.vim source ~/.dotfiles/nvim/init.vim
 augroup END

@@ -14,8 +14,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Theme/Appearance
 Plug 'altercation/vim-colors-solarized'
-Plug 'itchyny/lightline.vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -54,6 +52,7 @@ Plug 'lumiliet/vim-twig'
 
 
 " --- OTHER --- "
+Plug 'ryanoasis/vim-devicons' " Put this last-ish, so that devicons integrate into everything else.
 Plug 'tobyS/vmustache' " Required for tobys/pdv
 
 filetype plugin indent on                   " required!
@@ -62,16 +61,9 @@ call plug#end()
 
 " Plugin Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" solarized
-set background=dark
-colorscheme solarized
-
-" lightline
+" Airline
 source ~/.config/nvim/airline.vim
 
-" Neomake
-source ~/.config/nvim/neomake.vim
 
 " NERDTree
 augroup NERDTreeAU
@@ -85,6 +77,22 @@ augroup NERDTreeAU
 augroup END
 
 
+" Neomake
+source ~/.config/nvim/neomake.vim
+
+
+" Solarized
+set background=dark
+colorscheme solarized
+
+
+" UltiSnips
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.dotfiles/nvim/UltiSnips']
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
+
 
 " vim-php-namespace
 function! IPhpInsertUse()
@@ -97,11 +105,3 @@ augroup vimPhpNamespace
 	autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
 	autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 augroup END
-
-
-" UltiSnips
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.dotfiles/nvim/UltiSnips']
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsEditSplit="vertical"
