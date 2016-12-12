@@ -12,4 +12,4 @@ else
 fi
 
 echo -e "Installing global Node modules."
-npm install -g csslint eslint grunt-cli wordflip
+npm install -g csslint eslint grunt-cli trash-cli wordflip
