@@ -74,6 +74,7 @@ augroup NERDTreeAU
 	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTreeCWD | endif
 	"	Close vim completely if nothing but NERDTree is open.
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+	autocmd FileType nerdtree setlocal list!
 augroup END
 
 
@@ -83,7 +84,7 @@ source ~/.config/nvim/neomake.vim
 
 " PDV (PHP Documentor for Vim)
 let g:pdv_template_dir = $HOME ."/.dotfiles/nvim/plugged/pdv/templates_snip"
-nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
+nnoremap <buffer> <leader>d :call pdv#DocumentWithSnip()<CR>
 
 
 " Solarized

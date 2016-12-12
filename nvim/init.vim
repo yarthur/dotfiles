@@ -59,7 +59,7 @@ if !has('nvim')
 endif
 
 " Show whitespace
-set list listchars=eol:¶,tab:→\ ,trail:·
+set list listchars=eol:¶,tab:→\ ,trail:·,space:·
 
 " Use Spaces instead of Tabs
 set expandtab
