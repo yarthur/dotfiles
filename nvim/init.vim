@@ -67,7 +67,7 @@ set expandtab
 " Set Tab width to 4 space
 set tabstop=4
 
-" Highlight current column
+" Highlight current row
 set cursorline
 
 " Set highlighting settings for Cursor Line Number

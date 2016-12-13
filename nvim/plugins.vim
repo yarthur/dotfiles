@@ -26,7 +26,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree'
 Plug 'sirver/ultisnips' " Required for tobys/pdv
-Plug 'tobys/pdv'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
@@ -44,8 +43,9 @@ Plug 'elzr/vim-json'
 Plug 'plasticboy/vim-markdown'
 
 " PHP
-Plug 'stanangeloff/php.vim'
 Plug 'arnaud-lb/vim-php-namespace'
+Plug 'stanangeloff/php.vim'
+Plug 'tobys/pdv'
 
 " Twig
 Plug 'lumiliet/vim-twig'
