@@ -29,7 +29,8 @@ installBrew(){
 
 		echo -e "Installing CLI Tools"
 		brew install ack z
-		brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+		brew tap universal-ctags/universal-ctags
+		brew install --HEAD universal-ctags
 	fi
 }
 
