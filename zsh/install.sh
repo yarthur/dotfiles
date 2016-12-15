@@ -18,8 +18,12 @@ if [ ! -e "$HOME/.oh-my-zsh" ]; then
 	if [ $wgetTest = true ]; then
 		brew remove wget
 	fi
+
+	brew install zsh-completions
 else
 	echo -e "Updating Oh My Zsh"
 
-env ZSH=$ZSH sh $ZSH/tools/upgrade.sh
+	env ZSH=$ZSH sh $ZSH/tools/upgrade.sh
+
+	brew upgrade zsh-completions
 fi
