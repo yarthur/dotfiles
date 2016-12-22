@@ -79,6 +79,10 @@ highlight CursorLineNr term=bold ctermbg=0
 highlight NonText cterm=NONE ctermfg=10 ctermbg=NONE  " EOL
 highlight SpecialKey cterm=NONE ctermfg=10 ctermbg=NONE  " Tab
 
+" Use italics like all those damned hipsters do with their Operator ;)
+highlight Comment cterm=italic
+highlight htmlArg cterm=italic
+
 
 
 "-------------------- AutoCommands --------------------"
