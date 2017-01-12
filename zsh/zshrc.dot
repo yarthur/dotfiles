@@ -92,3 +92,6 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Custom Prompt
 source $HOME/.dotfiles/zsh/prompt.zsh
+
+# Default User Name
+DEFAULT_USER=`whoami`

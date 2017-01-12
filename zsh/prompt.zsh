@@ -13,13 +13,6 @@ prompt_dir(){
   prompt_segment blue black $prompt_short_dir
 }
 
-prompt_context() {
-  if [[ -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "$(!.%{%F{yellow}%}.)$USER@%m"
-  fi
-}
-
-
 
 # Git: branch/detached head, dirty status
 prompt_git() {
