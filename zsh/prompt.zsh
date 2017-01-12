@@ -22,7 +22,7 @@ prompt_git() {
     local LC_ALL="" LC_CTYPE="en_US.UTF-8"
     PL_BRANCH_CHAR=$'\uf418'         # 
   }
-  local ref dirty mode repo_path
+  local ref dirty mode repo_path git_remote_status
   repo_path=$(git rev-parse --git-dir 2>/dev/null)
 
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
@@ -42,6 +42,16 @@ prompt_git() {
       mode=" >R>"
     fi
 
+	git_remote_status=$(git for-each-ref --format="%(push:track)" refs/heads 2>/dev/null)
+    if [[ ! -z $git_remote_status ]]; then
+        # git_remote_status=" ${git_remote_status/ahead /\\uf478}"         # 
+        # git_remote_status="${git_remote_status/behind /\\uf479}"         # 
+        git_remote_status=" ${git_remote_status/ahead /+}"         # 
+        git_remote_status="${git_remote_status/behind /-}"         # 
+		# git_remote_status="${git_remote_status//[\]\[]/}"
+		git_remote_status="${git_remote_status/, //}"
+    fi
+
     setopt promptsubst
     autoload -Uz vcs_info
 
@@ -53,8 +63,7 @@ prompt_git() {
     zstyle ':vcs_info:*' formats '%u%c'
     zstyle ':vcs_info:*' actionformats '%u%c'
     vcs_info
-    echo -n "${ref/refs\/heads\//$PL_BRANCH_CHAR }${vcs_info_msg_0_%% }${mode}"
+    echo -n "${ref/refs\/heads\//$PL_BRANCH_CHAR }${git_remote_status}${vcs_info_msg_0_%% }${mode}"
   fi
 }
-
 
