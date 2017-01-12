@@ -27,7 +27,6 @@ prompt_git() {
   local PL_BRANCH_CHAR
   () {
     local LC_ALL="" LC_CTYPE="en_US.UTF-8"
-    # PL_BRANCH_CHAR=$'\ue0a0'         # 
     PL_BRANCH_CHAR=$'\uf418'         # 
   }
   local ref dirty mode repo_path
@@ -35,7 +34,7 @@ prompt_git() {
 
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
     dirty=$(parse_git_dirty)
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git rev-parse --short HEAD 2> /dev/null)"
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="\uf417 $(git rev-parse --short HEAD 2> /dev/null)"         # 
     if [[ -n $dirty ]]; then
       prompt_segment yellow black
     else
@@ -56,10 +55,10 @@ prompt_git() {
     zstyle ':vcs_info:*' enable git
     zstyle ':vcs_info:*' get-revision true
     zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr '\uf44d '         # 
-    zstyle ':vcs_info:*' unstagedstr '\uf444 '         # 
-    zstyle ':vcs_info:*' formats ' %u%c'
-    zstyle ':vcs_info:*' actionformats ' %u%c'
+    zstyle ':vcs_info:*' stagedstr ' \uf44d'         # 
+    zstyle ':vcs_info:*' unstagedstr ' \uf444'         # 
+    zstyle ':vcs_info:*' formats '%u%c'
+    zstyle ':vcs_info:*' actionformats '%u%c'
     vcs_info
     echo -n "${ref/refs\/heads\//$PL_BRANCH_CHAR }${vcs_info_msg_0_%% }${mode}"
   fi
