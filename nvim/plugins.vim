@@ -36,8 +36,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " --- LANGUAGE-SPECIFIC --- "
 " JS/JSON
-Plug 'jelera/vim-javascript-syntax'
 Plug 'elzr/vim-json'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'tpope/vim-jdaddy'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
