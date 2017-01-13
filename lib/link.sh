@@ -2,7 +2,7 @@
 
 config_dir="$HOME/.dotfiles"
 backup_dir=$config_dir/backup
-file_ext='.dot'
+file_ext='.symlink'
 
 echo -e "\nCreating symlinks"
 echo "=============================="

@@ -5,7 +5,7 @@ echo "=============================="
 
 config_dir="$HOME/.dotfiles"
 backup_dir=$config_dir/backup
-file_ext='.dot'
+file_ext='.symlink'
 
 if [ ! -d $backup_dir ]; then
 	echo "Creating backup directory at $backup_dir."
