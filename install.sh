@@ -1,20 +1,20 @@
 #j!/usr/bin/env bash
 installBrew(){
-	echo -e "\n\n*Brew"
-	echo -e "=============================="
+	echo "\n\n*Brew"
+	echo "=============================="
 	if test $(which brew); then
-		echo -e "Updating *Brew."
+		echo "Updating *Brew."
 		brew update
 
-		echo -e "Upgrading packages."
+		echo "Upgrading packages."
 		brew upgrade
 
-		echo -e "Removing unneeded packages."
+		echo "Removing unneeded packages."
 		brew cleanup
 	else
 		if [[ "$OSTYPE" = "darwin"* ]]; then
 			echo "Installing homebrew"
-			ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+			ruby "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 		elif [[ "$OSTYPE" = "linux-gnu" ]]; then
 			echo "Installing Linuxbrew"
 
@@ -27,7 +27,7 @@ installBrew(){
 			#Installing via yum? Sorry charlie, no such luck today.
 		fi
 
-		echo -e "Installing CLI Tools"
+		echo "Installing CLI Tools"
 		brew install ack z
 		brew tap universal-ctags/universal-ctags
 		brew install --HEAD universal-ctags
@@ -59,11 +59,11 @@ installConfigs(){
 	configs_dir="$HOME/.dotfiles"
 	install_scripts=$( find -H "." -maxdepth 3 -mindepth 2 -name "install.sh" )
 
-	echo -e "\n\nInstalling configurations."
-	echo -e "=============================="
+	echo "\n\nInstalling configurations."
+	echo "=============================="
 
 	#	Create symlink of project in the home directory.
-	if [ ! -e $configs_dir ]; then
+	if [ ! $configs_dir ]; then
 		echo "Creating link for all configs directory at $configs_dir."
 		ln -s $project_dir $configs_dir
 	fi
@@ -81,7 +81,7 @@ installConfigs(){
 	echo "All done!"
 }
 
-if [ ! -e $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.git ]; then
+if [ ! $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.git ]; then
 	cloneRepo
 else
 	installConfigs

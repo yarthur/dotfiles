@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
-
 config_files="$HOME/.dotfiles"
+
+source $config_files/lib/brew.sh
+
 
 echo -e "\n\nComposer"
 echo "=============================="
 
-if test ! $(which composer); then
+if $(check_installed_taps "composer"); then
+	echo "Upgrading Composer"
+	brew upgrade --cleanup "composer"
+else
 	echo -e "Installing Composer."
 	brew install composer
 

@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
+source $HOME/.dotfiles/lib/brew.sh
+
+node_modules="csslint eslint grunt-cli wordflip"
 
 echo -e "\n\nNode"
 echo -e "=============================="
 
-if test $(which node); then
+handle_taps "node"
+
+
+if [ "/usr/local/lib/node_modules" ]; then
 	echo -e "Removing global Node modules (for Hard Upgrade)."
-	npm uninstall -g csslint eslint grunt-cli wordflip
-else
-	echo -e "Installing Node."
-	brew install node
+	npm uninstall -g $node_modules
 fi
 
 echo -e "Installing global Node modules."

@@ -4,7 +4,7 @@ config_dir="$HOME/.dotfiles"
 backup_dir=$config_dir/backup
 file_ext='.symlink'
 
-echo -e "\nCreating symlinks"
+echo "\nCreating symlinks"
 echo "=============================="
 
 linkables=$( find -H "$config_dir" -maxdepth 3 -name "*$file_ext" )
@@ -15,7 +15,7 @@ for file in $linkables ; do
 	if [ -h $target ]; then
 		echo "~${target#Home} already exits... Skipping."
 	else
-		if [ -e $target ]; then
+		if [ $target ]; then
 			echo "Backing up ~${target#Home} to $config_dir/.backup"
 
 			if [ ! -d $backup_dir ]; then

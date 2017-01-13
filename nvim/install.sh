@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
+source $HOME/.dotfiles/lib/brew.sh
+
+brew_taps="python python3"
 
 echo -e "\n\nVim"
-echo -e "=============================="
+echo "=============================="
+handle_taps $brew_taps
 
-if test ! $(which nvim); then
-	echo -e "Installing Neovim"
-	brew install neovim/neovim/neovim python python3
+if $(check_installed_taps "neovim"); then
+	handle_taps "neovim"
+else
+	echo "Installing Neovim"
+	brew install neovim/neovim/neovim
 	pip2 install neovim
 	pip3 install neovim
 	gem install neovim
@@ -15,9 +21,8 @@ if test ! $(which nvim); then
 	fi
 
 	ln -s ~/.dotfiles/nvim ~/.config/nvim
-else
-	brew upgrade neovim
 fi
 
-echo -e "Installing/Upgrading Plugins"
+echo "Installing/Upgrading Plugins"
+
 nvim +PlugInstall! +qall

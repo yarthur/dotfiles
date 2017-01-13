@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
+source $HOME/dotfiles/lib/brew.sh
+
+brew_taps="zsh-completions"
 
 echo -e "\n\nZsh"
-echo -e "=============================="
+echo "=============================="
 
-if [ ! -e "$HOME/.oh-my-zsh" ]; then
-	echo -e "Installing Oh My Zsh"
+if [ ! "$HOME/.oh-my-zsh" ]; then
+	echo "Installing Oh My Zsh"
 
 	wgetTest=false
 
@@ -19,11 +22,8 @@ if [ ! -e "$HOME/.oh-my-zsh" ]; then
 		brew remove wget
 	fi
 
-	brew install zsh-completions
 else
-	echo -e "Updating Oh My Zsh"
-
 	env ZSH=$ZSH sh $ZSH/tools/upgrade.sh
-
-	brew upgrade zsh-completions
 fi
+
+handle_taps $brew_taps

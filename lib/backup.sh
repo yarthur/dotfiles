@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e "\nCreating backup"
+echo "\nCreating backup"
 echo "=============================="
 
 config_dir="$HOME/.dotfiles"
@@ -19,13 +19,13 @@ for file in $linkables; do
 	filename=".$( basename $file "$file_ext" )"
 	target="$HOME/$filename"
 
-	if [ -e $target ] && [ ! -h $target ]; then
+	if [ $target ] && [ ! -h $target ]; then
 		echo "backing up $filename"
 		mv $target $backup_dir
 	fi
 done
 
-if [ $1 ] && [ -e $1 ] && [ ! -h $1 ]; then
+if [ $1 ] && [ $1 ] && [ ! -h $1 ]; then
 	echo "backing up $1"
 	mv $1 $backup_dir
 fi
