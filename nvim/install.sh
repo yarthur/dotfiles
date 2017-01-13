@@ -12,9 +12,6 @@ if $(check_installed_taps "neovim"); then
 else
 	echo "Installing Neovim"
 	brew install neovim/neovim/neovim
-	pip2 install neovim
-	pip3 install neovim
-	gem install neovim
 
 	if [ ! -d ~/.config ]; then
 		mkdir ~/.config
@@ -24,5 +21,9 @@ else
 fi
 
 echo "Installing/Upgrading Plugins"
+
+pip2 install -U neovim
+pip3 install -U neovim
+gem install neovim && gem cleanup
 
 nvim +PlugInstall! +qall

@@ -1,12 +1,11 @@
-installed_taps="$( brew list )"
-
 check_installed_taps() {
 	tap="$1"
 
-	if test "${installed#*$tap}" != "$tap"; then
-		return 0    # not found
-	else
+	# if test "${installed#*$tap}" != "$tap"; then
+	if brew list -1 | grep -q "^${tap}}\$"; then
 		return 1    # found
+	else
+		return 0    # not found
 	fi
 }
 
