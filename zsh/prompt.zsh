@@ -13,6 +13,32 @@ prompt_dir(){
   prompt_segment blue black $prompt_short_dir
 }
 
+git_ref_status(){
+    local git_state=""
+    local git_prompt_ahead="+"
+    local git_prompt_behind="-"
+    local num_ahead="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
+    local num_behind="$(git log --oneline ..@{u} 2> /dev/null | wc -l | tr -d ' ')"
+
+    if [ "$num_ahead" -gt 0 ]; then
+        git_state=${git_state}${git_prompt_ahead}${num_ahead}
+
+        if [ "$num_behind" -gt 0 ]; then
+            git_state=$git_state/
+        fi
+    fi
+
+    if [ "$num_behind" -gt 0 ]; then
+        git_state=${git_state}${git_prompt_behind}${num_behind}
+    fi
+
+    if [[ ! -z $git_state ]]; then
+        git_state="[${git_state}]"
+    fi
+
+    echo -n $git_state
+}
+
 
 # Git: branch/detached head, dirty status
 prompt_git() {
@@ -42,15 +68,7 @@ prompt_git() {
       mode=" >R>"
     fi
 
-	git_remote_status=$(git for-each-ref --format="%(push:track)" refs/heads 2>/dev/null)
-    if [[ ! -z $git_remote_status ]]; then
-        # git_remote_status=" ${git_remote_status/ahead /\\uf478}"         # 
-        # git_remote_status="${git_remote_status/behind /\\uf479}"         # 
-        git_remote_status=" ${git_remote_status/ahead /+}"         # 
-        git_remote_status="${git_remote_status/behind /-}"         # 
-		# git_remote_status="${git_remote_status//[\]\[]/}"
-		git_remote_status="${git_remote_status/, //}"
-    fi
+	local git_state=" $(git_ref_status)"
 
     setopt promptsubst
     autoload -Uz vcs_info
@@ -63,7 +81,7 @@ prompt_git() {
     zstyle ':vcs_info:*' formats '%u%c'
     zstyle ':vcs_info:*' actionformats '%u%c'
     vcs_info
-    echo -n "${ref/refs\/heads\//$PL_BRANCH_CHAR }${git_remote_status}${vcs_info_msg_0_%% }${mode}"
+    echo -n "${ref/refs\/heads\//$PL_BRANCH_CHAR }${git_state}${vcs_info_msg_0_%% }${mode}"
   fi
 }
 
