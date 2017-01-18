@@ -5,4 +5,7 @@ nmap <Leader>CL :e CHANGELOG.md<cr>
 nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
 
 
-nmap <Leader>config :tabnew<cr>:NERDtree ~/.dotfiles/<cr>
+nmap <Leader>config :tabnew\|cd ~/.dotfiles/\|NERDTreeCWD<cr>
+
+
+noremap <Leader>q :bp\|bd #<cr>
