@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source $HOME/.dotfiles/lib/brew.sh
 
-brew_taps="python python3"
+brew_taps="python python3 ruby"
 
 echo -e "\n\nVim"
 echo "=============================="

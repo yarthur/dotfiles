@@ -57,7 +57,7 @@ cloneRepo(){
 installConfigs(){
 	project_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 	configs_dir="$HOME/.dotfiles"
-	install_scripts=$( find -H "." -maxdepth 3 -mindepth 2 -name "install.sh" )
+	install_scripts=$( find -H "." -maxdepth 3 -mindepth 3 -name "install.sh" )
 
 	echo "\n\nInstalling configurations."
 	echo "=============================="

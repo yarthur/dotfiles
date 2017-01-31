@@ -12,7 +12,7 @@ if $(check_installed_taps "composer"); then
 	brew upgrade --cleanup "composer"
 else
 	echo -e "Installing Composer."
-	brew install composer
+	brew install homebrew/php/composer
 
 	$config_files/lib/backup.sh ~/.composer
 
