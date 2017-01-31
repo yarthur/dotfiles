@@ -44,7 +44,8 @@ Plug 'tpope/vim-jdaddy'
 Plug 'plasticboy/vim-markdown'
 
 " PHP
-Plug 'arnaud-lb/vim-php-namespace'
+Plug 'arnaud-lb/vim-php-namespace' " This one's for use statements.
+Plug 'dantleech/vim-phpnamespace'  " This one's for class namespaces. Integrated into Ultisnips!!
 Plug 'stanangeloff/php.vim'
 Plug 'tobys/pdv'
 
@@ -85,7 +86,7 @@ source ~/.config/nvim/neomake.vim
 
 " PDV (PHP Documentor for Vim)
 let g:pdv_template_dir = $HOME ."/.dotfiles/nvim/plugged/pdv/templates_snip"
-nnoremap <buffer> <leader>d :call pdv#DocumentWithSnip()<CR>
+nnoremap <leader>doc :call pdv#DocumentWithSnip()<CR>
 
 
 " Solarized
@@ -99,6 +100,10 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
+
+
+" vim-phpnamespace
+nnoremap <silent><leader>nn :call PhpNamespaceInsert()<CR>
 
 
 " vim-php-namespace
