@@ -57,6 +57,7 @@ plugins=(composer cp extract git git-flow laravel4 npm nvim osx sublime sudo vun
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# export PATH="/Applications/MAMP/bin/php/php5.3.29/bin:$PATH"
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
