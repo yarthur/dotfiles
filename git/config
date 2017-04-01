@@ -17,8 +17,8 @@
 	trustExitCode = true
 [push]
 	default = simple
-[url "https://"]
-	insteadOf = git://
+; [url "https://"]
+; 	insteadOf = git://
 [user]
 	name = John Arthur
 	email = john@jtarthur.net
