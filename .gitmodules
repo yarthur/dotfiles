@@ -4,6 +4,3 @@
 [submodule "colors/PhpStorm-Solarized"]
 	path = colors/PhpStorm-Solarized
 	url = https://github.com/braver/PhpStorm-Solarized
-[submodule "fonts/nerd-fonts"]
-	path = fonts/nerd-fonts
-	url = https://github.com/ryanoasis/nerd-fonts

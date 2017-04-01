@@ -27,10 +27,14 @@ installBrew(){
 			#Installing via yum? Sorry charlie, no such luck today.
 		fi
 
-		echo "Installing CLI Tools"
+		echo "Installing CLI Tools."
 		brew install ack z
 		brew tap universal-ctags/universal-ctags
 		brew install --HEAD universal-ctags
+
+		echo "Installing Inconsolata Nerd Font."
+		brew tap caskroom/fonts
+		brew cask install font-inconsolata-nerd-font
 	fi
 }
 
