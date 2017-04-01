@@ -53,9 +53,9 @@ cloneRepo(){
 		installGit
 	fi
 
-	git clone https://github.com/yarthur/configs
+	git clone https://github.com/yarthur/dotfiles ~/.dotfiles
 
-	source configs/install.sh
+	source ~/.dotfiles/install.sh
 }
 
 installConfigs(){
