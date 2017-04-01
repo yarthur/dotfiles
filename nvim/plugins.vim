@@ -31,6 +31,7 @@ Plug 'tpope/vim-surround'
 
 " VCS
 Plug 'airblade/vim-gitgutter'
+Plug 'low-ghost/nerdtree-fugitive'
 Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
