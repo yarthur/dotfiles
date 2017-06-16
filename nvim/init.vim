@@ -83,6 +83,9 @@ highlight SpecialKey cterm=NONE ctermfg=10 ctermbg=NONE  " Tab
 highlight Comment cterm=italic
 highlight htmlArg cterm=italic
 
+" Set clipboard to unnamed.
+" This allows nvim to copy to OS clipboard.
+set clipboard=unnamed
 
 
 "-------------------- AutoCommands --------------------"
