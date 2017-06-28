@@ -15,4 +15,4 @@ if [ "/usr/local/lib/node_modules" ]; then
 fi
 
 echo -e "Installing global Node modules."
-npm install -g csslint eslint grunt-cli trash-cli wordflip
+npm install -g csslint eslint grunt-cli jsonlint trash-cli wordflip
