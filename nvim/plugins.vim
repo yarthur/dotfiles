@@ -21,6 +21,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'neomake/neomake'
 
 " Functionality
+Plug 'craigemery/vim-autotag'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
@@ -67,6 +68,8 @@ call plug#end()
 " Airline
 source ~/.config/nvim/airline.vim
 
+" Autotag
+let g:autotagTagsFile = ".tags"
 
 " NERDTree
 augroup NERDTreeAU
