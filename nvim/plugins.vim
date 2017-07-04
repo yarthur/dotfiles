@@ -29,6 +29,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'sirver/ultisnips' " Required for tobys/pdv
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'Valloric/YouCompleteMe'
 
 " VCS
 Plug 'airblade/vim-gitgutter'
