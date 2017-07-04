@@ -16,6 +16,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
 
 " Linting/Syntax Checking
 Plug 'neomake/neomake'
@@ -27,9 +28,11 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree'
 Plug 'sirver/ultisnips' " Required for tobys/pdv
+Plug 'spf13/vim-autoclose'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe'
+Plug 'vim-scripts/IndexedSearch'
 
 " VCS
 Plug 'airblade/vim-gitgutter'
@@ -39,7 +42,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " --- LANGUAGE-SPECIFIC --- "
 " JS/JSON
-Plug 'elzr/vim-json'
+Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'jelera/vim-javascript-syntax'
 Plug 'tpope/vim-jdaddy'
 
@@ -47,18 +50,23 @@ Plug 'tpope/vim-jdaddy'
 Plug 'plasticboy/vim-markdown'
 
 " PHP
-Plug 'arnaud-lb/vim-php-namespace' " This one's for use statements.
-Plug 'dantleech/vim-phpnamespace'  " This one's for class namespaces. Integrated into Ultisnips!!
-Plug 'stanangeloff/php.vim'
-Plug 'tobys/pdv'
+Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
+Plug 'arnaud-lb/vim-php-namespace', { 'for' : 'php' } " This one's for use statements.
+Plug 'joonty/vdebug', {'for': 'php'}
+Plug 'dantleech/vim-phpnamespace', {'for': 'php'} " This one's for class namespaces. Integrated into Ultisnips!!
+" Plug 'padawan-php/padawan.vim', {'for': 'php'} " Requires padawan server, which requires php5.4+
+Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
+Plug 'stanangeloff/php.vim', {'for': 'php'}
+Plug 'tobys/pdv', {'for': 'php'}
 
 " Twig
-Plug 'lumiliet/vim-twig'
+Plug 'lumiliet/vim-twig', {'for': 'twig'}
 
 
 " --- OTHER --- "
 Plug 'ryanoasis/vim-devicons' " Put this last-ish, so that devicons integrate into everything else.
 Plug 'tobyS/vmustache' " Required for tobys/pdv
+
 
 filetype plugin indent on                   " required!
 call plug#end()
@@ -69,8 +77,6 @@ call plug#end()
 " Airline
 source ~/.config/nvim/airline.vim
 
-" Autotag
-let g:autotagTagsFile = ".tags"
 
 " NERDTree
 augroup NERDTreeAU
@@ -106,6 +112,12 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
+" vim-autoclose
+let g:autoclose_vim_commentmode = 1  " If file type uses \" as comment, won't auto close them.
+
+" vim-phpcomplete
+let g:phpcomplete_min_num_of_chars_for_namespace_completion = 3  " Type at least 3 characters for completion to kick in.
+let g:phpcomplete_parse_docblock_comments = 1  " Parses docblock comments, and presents improved meta data.
 
 " vim-phpnamespace
 nnoremap <silent><leader>nn :call PhpNamespaceInsert()<CR>
