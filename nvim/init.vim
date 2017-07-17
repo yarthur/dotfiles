@@ -87,6 +87,9 @@ highlight htmlArg cterm=italic
 " This allows nvim to copy to OS clipboard.
 set clipboard=unnamed
 
+" Recognize hidden tags files (.tags)
+set tags+=./.tags;,.tags;
+
 
 "-------------------- AutoCommands --------------------"
 " Auto Source on saving a config file.

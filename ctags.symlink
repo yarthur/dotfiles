@@ -1,8 +1,9 @@
+-f .tags
+
 --recurse=yes
 --exclude=.git
 --exclude=compiled.php
 --exclude=db/*
 --exclude=log/*
 --exclude=node_modules/*
---exclude=vendor/*
 --exclude=workbench/*
