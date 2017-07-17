@@ -111,9 +111,40 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
+" UltiSnips completion function that tries to expand a snippet. If there's no
+" snippet for expanding, it checks for completion window and if it's
+" shown, selects first element. If there's no completion window it tries to
+" jump to next placeholder. If there's no placeholder it just returns TAB key 
+" Source: <https://github.com/Valloric/YouCompleteMe/issues/36#issuecomment-15451411>
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+" Apply the above function
+" Source: <https://stackoverflow.com/a/18685821>
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsListSnippets="<c-e>"
+" this mapping Enter key to <C-y> to chose the current highlight item 
+" and close the selection list, same as other IDEs.
+" CONFLICT with some plugins like tpope/Endwise
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " vim-autoclose
 let g:autoclose_vim_commentmode = 1  " If file type uses \" as comment, won't auto close them.
+
+" vim-json
+let g:vim_json_syntax_conceal = 0  " Prevent quotes from being hidden.
 
 " vim-phpcomplete
 let g:phpcomplete_min_num_of_chars_for_namespace_completion = 3  " Type at least 3 characters for completion to kick in.
@@ -134,3 +165,4 @@ augroup vimPhpNamespace
 	autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
 	autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 augroup END
+
