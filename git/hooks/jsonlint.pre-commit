@@ -8,32 +8,43 @@ COLOR_RED="\x1B[31m"
 COLOR_YELLOW="\x1B[1;33m"
 COLOR_GREEN="\x1B[32m"
 COLOR_NONE="\x1B[0m"
-
-if ! jsonlint > /dev/null 2>&1; then
-    echo "${COLOR_YELLOW}JSON Lint is not installed. Exiting.${COLOR_NONE}"
-    exit 0
-fi
+COLOR_BRIGHTWHITE="\x1B[37m"
 
 repo=$( git rev-parse --show-toplevel )
 
-echo ${repo};
+files=$( exec git diff --cached --name-status | grep '^\(A\|M\).*\.json\?$' | sed 's/^[AM]//g' )
 
-for file in $( exec git diff-index --cached --name-only HEAD ); do
-    if [ ${file: -3} == ".json" ]; then
-        status=$( exec git status --porcelain $file )
+if [[ $files = "" ]] ; then
+	exit 0
+fi
 
-        if [[ $status != D* ]]; then
-            jsonlint ${repo}/${file}
-            EXIT_CODE=$((${EXIT_CODE} + $?))
-        fi
-    fi
+if type "${repo}/node_modules/.bin/jsonlint" > /dev/null; then
+	command="${repo}/node_modules/.bin/jsonlint"
+elif type "jsonlint" > /dev/null; then
+	command="jsonlint"
+else
+	echo "${COLOR_YELLOW}JSON Lint is not installed. Exiting.${COLOR_NONE}"
+	exit 0
+fi
+
+echo "${COLOR_BRIGHTWHITE}  JSONLint${COLOR_NONE}"
+echo "${COLOR_BRIGHTWHITE}-----------${COLOR_NONE}"
+
+for file in $files; do
+	echo $file
+	git show :$file | $command
+
+	EXIT_CODE=$((${EXIT_CODE} + $?))
+
+	echo "-----------------------------------------\n"
 done
 
-echo ""
 if [[ ${EXIT_CODE} -ne 0 ]]; then
-    echo "${COLOR_RED}✘ JSON Lint detected syntax problems.${COLOR_NONE}"
+	echo "${COLOR_RED}✘ JSON Lint detected syntax problems.${COLOR_NONE}"
 else
-    echo "${COLOR_GREEN}✔ JSON Lint detected no errors.${COLOR_NONE}"
+	echo "${COLOR_GREEN}✔ JSON Lint detected no errors.${COLOR_NONE}"
 fi
+
+echo "\n\n"
 
 exit $((${EXIT_CODE}))
