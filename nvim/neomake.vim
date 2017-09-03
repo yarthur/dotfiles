@@ -16,3 +16,11 @@ augroup my_error_sign_color
 		\ highlight NeomakeErrorSign ctermfg=1 ctermbg=0
 augroup END
 
+let g:neomake_twig_twiglint_maker = {
+    \ 'args': ['lint'],
+    \ 'exe': 'twig-lint',
+    \ 'errorformat': '%f:%l:%c: %m',
+    \ }
+let g:neomake_html_twig_enabled_makers = ['twiglint']
+
+let g:neomake_logfile = "/Users/req86809/.neomake_log"

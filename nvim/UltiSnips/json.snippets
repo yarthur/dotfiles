@@ -1,0 +1,69 @@
+snippet imgObj "Generate empty image object for EAP data"
+"image": {
+	"url": "",
+	"alt": "",
+	"title": ""
+}
+endsnippet
+
+
+snippet article "Generate article for EAP data"
+{
+	"title": "$1",
+	"content": "<p>$2</p>",
+	"image": {
+		"url": "",
+		"alt": "",
+		"title": ""
+	},
+	"url": ""
+}$0
+endsnippet
+
+snippet intro "Generate Intro for EAP data"
+"intro": {
+	"headline": "$1",
+	"content": "<p>$2</p>"
+}$0
+endsnippet
+
+snippet feature "generate feature data for EAP"
+{
+	"title": "$1",
+	"content": "<p>$2</p>",
+	"url": ""
+}$0
+endsnippet
+
+snippet hero "Generate Hero for EAP Data"
+"hero": {
+	"headline": "$1",
+	"content": "<p>$2</p>",
+	"image": {
+		"url": "",
+		"alt": "",
+		"title": ""
+	}
+},
+endsnippet
+
+snippet heroImage "Generate Hero Image data"
+"heroImage": {
+	"large": "/eap/images/heroes/$1-lg.jpg",
+	"small": "/eap/images/heroes/$1-sm.jpg"
+},$0
+endsnippet
+
+snippet resource
+{
+	"label": "$1",
+	"url": "$2"
+}$0
+endsnippet
+
+snippet faq
+{
+	"question": "$1",
+	"answer": "<p>$2</p>"
+}$0
+endsnippet

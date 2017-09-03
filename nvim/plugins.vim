@@ -12,6 +12,12 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" For deoplete
+function! DoRemote(arg)
+	UpdateRemotePlugins
+endfunction
+
+
 " Theme/Appearance
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
@@ -20,18 +26,20 @@ Plug 'Yggdroot/indentLine'
 
 " Linting/Syntax Checking
 Plug 'neomake/neomake'
+Plug 'benjie/neomake-local-eslint.vim'  " Prefer local instals of eslint if available.
 
 " Functionality
 Plug 'craigemery/vim-autotag'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
+Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdtree'
 Plug 'sirver/ultisnips' " Required for tobys/pdv
-Plug 'spf13/vim-autoclose'
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+" Plug 'spf13/vim-autoclose'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'Valloric/YouCompleteMe'
 Plug 'vim-scripts/IndexedSearch'
 
 " VCS
@@ -42,8 +50,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " --- LANGUAGE-SPECIFIC --- "
 " JS/JSON
+Plug 'carlitux/deoplete-ternjs'  " Deoplete completions for JS/Tern.
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'jelera/vim-javascript-syntax'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 Plug 'tpope/vim-jdaddy'
 
 " Markdown
@@ -76,6 +86,21 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
 source ~/.config/nvim/airline.vim
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#max_abbr_width = 0
+let g:deoplete#max_menu_width = 0
+let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+
+let g:tern_request_timeout = 1
+let g:tern_request_timeout = 6000
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
 
 
 " NERDTree
@@ -142,6 +167,12 @@ au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:U
 
 " vim-autoclose
 let g:autoclose_vim_commentmode = 1  " If file type uses \" as comment, won't auto close them.
+
+" vim-commentary
+augroup vimCommentary
+    autocmd!
+    autocmd FileType twig setlocal commentstring={#\ %s\ #}
+augroup END
 
 " vim-json
 let g:vim_json_syntax_conceal = 0  " Prevent quotes from being hidden.
