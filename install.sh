@@ -32,6 +32,11 @@ installBrew(){
 		brew tap universal-ctags/universal-ctags
 		brew install --HEAD universal-ctags
 
+		echo "Installing Common Applications"
+		brew tap caskroom/cask
+		brew tap caskroom/versions
+		brew cask install 1password chrome firefoxdeveloperedition iterm2 sequelpro slack sublime-text vagrant virtualbox 
+
 		echo "Installing Fira Nerd Font."
 		brew tap caskroom/fonts
 		brew cask install font-firacode-nerd-font
@@ -61,11 +66,11 @@ cloneRepo(){
 installConfigs(){
 	project_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 	configs_dir="$HOME/.dotfiles"
-	install_scripts=$( find -H "." -maxdepth 3 -mindepth 3 -name "install.sh" )
+	install_scripts=$( find -H "$configs_dir" -maxdepth 3 -mindepth 2 -name "install.sh" )
 
 	echo "\n\nInstalling configurations."
+echo $install_scripts
 	echo "=============================="
-
 	#	Create symlink of project in the home directory.
 	if [ ! $configs_dir ]; then
 		echo "Creating link for all configs directory at $configs_dir."
