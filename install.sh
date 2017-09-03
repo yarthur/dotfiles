@@ -32,9 +32,9 @@ installBrew(){
 		brew tap universal-ctags/universal-ctags
 		brew install --HEAD universal-ctags
 
-		echo "Installing Inconsolata Nerd Font."
+		echo "Installing Fira Nerd Font."
 		brew tap caskroom/fonts
-		brew cask install font-inconsolata-nerd-font
+		brew cask install font-firacode-nerd-font
 	fi
 }
 
