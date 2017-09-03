@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source $HOME/.dotfiles/lib/brew.sh
 
-brew_taps="cmake python python3 ruby" # cmake is for the You Complete Me plugin.
+brew_taps="python python3 ruby"
 
 echo -e "\n\nVim"
 echo "=============================="
@@ -26,6 +26,4 @@ pip2 install -U neovim
 pip3 install -U neovim
 gem install neovim && gem cleanup
 
-nvim +PlugInstall! +qall
-
-$( dirname "${BASH_SOURCE[0]}" )/plugged/YouCompleteMe/install.sh --tern-completer
+nvim +PlugInstall! +PlugClean +qall
