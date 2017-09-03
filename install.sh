@@ -26,21 +26,21 @@ installBrew(){
 
 			#Installing via yum? Sorry charlie, no such luck today.
 		fi
-
-		echo "Installing CLI Tools."
-		brew install ack z
-		brew tap universal-ctags/universal-ctags
-		brew install --HEAD universal-ctags
-
-		echo "Installing Common Applications"
-		brew tap caskroom/cask
-		brew tap caskroom/versions
-		brew cask install 1password chrome firefoxdeveloperedition iterm2 sequelpro slack sublime-text vagrant virtualbox 
-
-		echo "Installing Fira Nerd Font."
-		brew tap caskroom/fonts
-		brew cask install font-firacode-nerd-font
 	fi
+
+	echo "Installing CLI Tools."
+	brew install ack z
+	brew tap universal-ctags/universal-ctags
+	brew install --HEAD universal-ctags
+
+	echo "Installing Common Applications"
+	brew tap caskroom/cask
+	brew tap caskroom/versions
+	brew cask install 1password chrome firefoxdeveloperedition iterm2 sequelpro slack sublime-text vagrant virtualbox 
+
+	echo "Installing Fira Nerd Font."
+	brew tap caskroom/fonts
+	brew cask install font-firacode-nerd-font
 }
 
 

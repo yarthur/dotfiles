@@ -10,6 +10,6 @@ handle_taps $brew_taps
 
 
 
-if [ ! -h $HOME/config/git ]; then
+if [ ! -h $HOME/.config/git ]; then
 	ln -s $HOME/.dotfiles/git $HOME/.config/git
 fi
