@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source $HOME/.dotfiles/lib/brew.sh
 
-node_modules="csslint eslint grunt-cli wordflip"
+node_modules="eslint grunt-cli jsonlint stylelint trash-cli wordflip"
 
 echo -e "\n\nNode"
 echo -e "=============================="
@@ -15,4 +15,4 @@ if [ "/usr/local/lib/node_modules" ]; then
 fi
 
 echo -e "Installing global Node modules."
-npm install -g csslint eslint grunt-cli jsonlint trash-cli wordflip
+npm install -g $node_modules
