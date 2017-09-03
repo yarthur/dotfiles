@@ -8,12 +8,12 @@
 [credential]
 	helper = osxkeychain
 [difftool "sourcetree"]
-	cmd = /Applications/DeltaWalker.app/Contents/MacOS/Deltawalker \"$REMOTE\" \"$LOCAL\" -mi -pwd=\"`pwd`\"
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [init]
 	templatedir = ~/.dotfiles/git/templates
 [mergetool "sourcetree"]
-	cmd = /Applications/DeltaWalker.app/Contents/MacOS/Deltawalker \"$LOCAL\" \"$REMOTE\" \"$BASE\" -merged=\"$MERGED\" -mi -pwd=\"`pwd`\"
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [push]
 	default = simple
@@ -52,3 +52,7 @@
 		# Show what you've done since yesterday to prepare your standup
 		standup = !git log --since yesterday --author $(git config user.email) --pretty=short
 	#	#	#
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
