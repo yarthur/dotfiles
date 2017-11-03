@@ -43,8 +43,9 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/IndexedSearch'
 
 " VCS
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'low-ghost/nerdtree-fugitive'
+Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
@@ -197,3 +198,7 @@ augroup vimPhpNamespace
 	autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 augroup END
 
+
+" vim-signify
+let g:signify_vcs_list = [ 'git', 'svn' ]   " These are the only VCS tools I need to worry about.
+let g:signify_realtime = 1  " I like it when my gutter updates in real time.
