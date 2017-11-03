@@ -95,3 +95,7 @@ source $HOME/.dotfiles/zsh/prompt.zsh
 
 # Default User Name
 DEFAULT_USER=`whoami`
+
+# Other plugins.
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh;
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

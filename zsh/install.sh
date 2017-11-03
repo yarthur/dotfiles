@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source $HOME/.dotfiles/lib/brew.sh
 
-brew_taps="zsh-completions"
+brew_taps="zsh-autosuggestions zsh-completions zsh-syntax-highlighting"
 
 echo -e "\n\nZsh"
 echo "=============================="
