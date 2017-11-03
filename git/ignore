@@ -48,3 +48,6 @@ Thumbs.db
 
 # Ctags/Exuberant Tags
 .tags
+
+# Tern
+.tern-port
