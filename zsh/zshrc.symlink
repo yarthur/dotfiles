@@ -96,6 +96,10 @@ source $HOME/.dotfiles/zsh/prompt.zsh
 # Default User Name
 DEFAULT_USER=`whoami`
 
+### CUSTOM ALIASES
+alias glob='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
+alias globa='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --all'
+
 # Other plugins.
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh;
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
