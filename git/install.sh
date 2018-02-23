@@ -8,8 +8,7 @@ echo -e "=============================="
 
 handle_taps $brew_taps
 
-
-
+# Link this directory to ~/.config/git
 if [ ! -h $HOME/.config/git ]; then
 	ln -s $HOME/.dotfiles/git $HOME/.config/git
 fi
