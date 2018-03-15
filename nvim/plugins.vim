@@ -12,11 +12,6 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-" For deoplete
-function! DoRemote(arg)
-	UpdateRemotePlugins
-endfunction
-
 
 " Theme/Appearance
 Plug 'altercation/vim-colors-solarized'
@@ -36,7 +31,7 @@ Plug 'ervandew/supertab'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdtree'
 Plug 'sirver/ultisnips' " Required for tobys/pdv
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'spf13/vim-autoclose'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
