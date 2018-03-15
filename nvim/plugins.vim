@@ -20,8 +20,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 
 " Linting/Syntax Checking
-Plug 'neomake/neomake'
-Plug 'benjie/neomake-local-eslint.vim'  " Prefer local instals of eslint if available.
+Plug 'w0rp/ale'
 
 " Functionality
 Plug 'craigemery/vim-autotag'
@@ -110,10 +109,6 @@ augroup NERDTreeAU
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 	autocmd FileType nerdtree setlocal list!
 augroup END
-
-
-" Neomake
-source ~/.config/nvim/neomake.vim
 
 
 " PDV (PHP Documentor for Vim)
