@@ -19,7 +19,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 
-" Linting/Syntax Checking
+" Linting/Syntax Checking/Test Runners
+Plug 'janko-m/vim-test'
+Plug 'tpope/vim-dispatch'
 Plug 'w0rp/ale'
 
 " Functionality
@@ -61,6 +63,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
 Plug 'arnaud-lb/vim-php-namespace', { 'for' : 'php' } " This one's for use statements.
 Plug 'dantleech/vim-phpnamespace', {'for': 'php'} " This one's for class namespaces. Integrated into Ultisnips!!
+Plug 'dantleech/vim-phpunit', {'for': 'php'}
 Plug 'joonty/vdebug', {'for': 'php'}
 " Plug 'padawan-php/padawan.vim', {'for': 'php'} " Requires padawan server, which requires php5.4+
 Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
@@ -195,3 +198,7 @@ augroup END
 " vim-signify
 let g:signify_vcs_list = [ 'git', 'svn' ]   " These are the only VCS tools I need to worry about.
 let g:signify_realtime = 1  " I like it when my gutter updates in real time.
+
+
+" vim-test
+let test#strategy = "dispatch_background"
