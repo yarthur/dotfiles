@@ -44,6 +44,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " --- LANGUAGE-SPECIFIC --- "
+" Blade Templates
+Plug 'jwalton512/vim-blade'
+
 " JS/JSON
 Plug 'carlitux/deoplete-ternjs'  " Deoplete completions for JS/Tern.
 Plug 'elzr/vim-json', {'for': 'json'}
