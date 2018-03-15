@@ -106,3 +106,6 @@ augroup END
 " Associate *.mjs files as Javascript Files
 " (*.mjs is the current Node convention, I guess?)
 au BufNewFile,BufRead *.mjs set filetype=javascript
+
+" Ignore whitespace on diff.
+set diffopt=filler,iwhite
