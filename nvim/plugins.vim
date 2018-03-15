@@ -65,10 +65,10 @@ Plug 'arnaud-lb/vim-php-namespace', { 'for' : 'php' } " This one's for use state
 Plug 'dantleech/vim-phpnamespace', {'for': 'php'} " This one's for class namespaces. Integrated into Ultisnips!!
 Plug 'dantleech/vim-phpunit', {'for': 'php'}
 Plug 'joonty/vdebug', {'for': 'php'}
+Plug 'lvht/phpcd.vim', {'for': 'php'}
 " Plug 'padawan-php/padawan.vim', {'for': 'php'} " Requires padawan server, which requires php5.4+
-Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
+Plug 'Rican7/php-doc-modded', {'for': 'php'}
 Plug 'stanangeloff/php.vim', {'for': 'php'}
-Plug 'tobys/pdv', {'for': 'php'}
 
 " Twig
 Plug 'lumiliet/vim-twig', {'for': 'twig'}
@@ -117,9 +117,22 @@ augroup NERDTreeAU
 augroup END
 
 
-" PDV (PHP Documentor for Vim)
-let g:pdv_template_dir = $HOME ."/.dotfiles/nvim/plugged/pdv/templates_snip"
-nnoremap <leader>doc :call pdv#DocumentWithSnip()<CR>
+" php-doc-modded
+" Ripped from http://kushellig.de/vim-automatic-phpdoc/
+function! UpdatePhpDocIfExists()
+    normal! k
+    if getline('.') =~ '/'
+        normal! V%d
+    else
+        normal! j
+    endif
+    call PhpDocSingle()
+    normal! k^%k$
+    if getline('.') =~ ';'
+        exe "normal! $svoid"
+    endif
+endfunction
+nnoremap <leader>h :call UpdatePhpDocIfExists()<CR>
 
 
 " Solarized
