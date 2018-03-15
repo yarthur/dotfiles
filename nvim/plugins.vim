@@ -57,8 +57,8 @@ Plug 'plasticboy/vim-markdown'
 " PHP
 Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
 Plug 'arnaud-lb/vim-php-namespace', { 'for' : 'php' } " This one's for use statements.
-Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'dantleech/vim-phpnamespace', {'for': 'php'} " This one's for class namespaces. Integrated into Ultisnips!!
+Plug 'joonty/vdebug', {'for': 'php'}
 " Plug 'padawan-php/padawan.vim', {'for': 'php'} " Requires padawan server, which requires php5.4+
 Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
 Plug 'stanangeloff/php.vim', {'for': 'php'}
