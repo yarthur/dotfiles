@@ -101,3 +101,8 @@ augroup autosourcing
 	" Source if any .vim file within ~/.dotfiles/vim is edited and saved.
 	autocmd BufWritePost ~/.dotfiles/nvim/*.vim source ~/.dotfiles/nvim/init.vim
 augroup END
+
+
+" Associate *.mjs files as Javascript Files
+" (*.mjs is the current Node convention, I guess?)
+au BufNewFile,BufRead *.mjs set filetype=javascript
