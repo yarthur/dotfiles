@@ -1,6 +1,5 @@
 {
     "require": {
-        "asm89/twig-lint": "*",
-        "squizlabs/php_codesniffer": "*"
+        "asm89/twig-lint": "*"
     }
 }
