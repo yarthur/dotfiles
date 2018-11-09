@@ -1,21 +1,16 @@
 #!/usr/bin/env bash
 config_files="$HOME/.dotfiles"
 
-source $config_files/lib/brew.sh
-
-
 echo -e "\n\nComposer"
 echo "=============================="
 
-if $(check_installed_taps "composer"); then
-	echo "Upgrading Composer"
-	brew upgrade --cleanup "composer"
-else
-	echo -e "Installing Composer."
-	brew install homebrew/php/composer
-
+# If the composer dir exists, but isn't symlinked to this version, back up and remove.
+if [ ! "$(readlink $HOME/.composer)" = "$config_files/composer" ]; then
 	$config_files/lib/backup.sh ~/.composer
+fi
 
+# Link this directory to ~/.composer
+if [ ! -h $HOME/.composer ]; then
 	ln -s $config_files/composer $HOME/.composer
 fi
 

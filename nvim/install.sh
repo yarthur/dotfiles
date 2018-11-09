@@ -1,29 +1,27 @@
 #!/usr/bin/env bash
-source $HOME/.dotfiles/lib/brew.sh
-
-brew_taps="python python3 ruby"
+config_files="$HOME/.dotfiles"
 
 echo -e "\n\nVim"
 echo "=============================="
-handle_taps $brew_taps
 
-if $(check_installed_taps "neovim"); then
-	handle_taps "neovim"
-else
-	echo "Installing Neovim"
-	brew install neovim/neovim/neovim
+if [ ! -d ~/.config ]; then
+	mkdir ~/.config
+fi
 
-	if [ ! -d ~/.config ]; then
-		mkdir ~/.config
-	fi
+# If the nvim config dir exists, but isn't symlinked to this version, back up and remove.
+if [ ! "$(readlink $HOME/.config/nvim)" = "$($config_files/nvim)" ]; then
+	$config_files/lib/backup.sh ~/.config/nvim
+fi
 
-	ln -s ~/.dotfiles/nvim ~/.config/nvim
+# Link this directory to ~/.config/nvim
+if [ ! -h $HOME/.composer ]; then
+	ln -s $config_files/nvim $HOME/.config/nvim
 fi
 
 echo "Installing/Upgrading Plugins"
 
 pip2 install -U neovim
 pip3 install -U neovim
-gem install neovim && gem cleanup
+npm uninstall -g neovim && npm install -g neovim
 
 nvim +PlugInstall! +PlugClean +qall

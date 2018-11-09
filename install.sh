@@ -29,33 +29,13 @@ installBrew(){
 	fi
 
 	echo "Installing CLI Tools."
-	brew install ack z
-	brew tap universal-ctags/universal-ctags
-	brew install --HEAD universal-ctags
-
-	echo "Installing Common Applications"
-	brew tap caskroom/cask
-	brew tap caskroom/versions
-	brew cask install 1password chrome firefoxdeveloperedition iterm2 sequelpro slack sublime-text vagrant virtualbox 
-
-	echo "Installing Fira Nerd Font."
-	brew tap caskroom/fonts
-	brew cask install font-firacode-nerd-font
+	brew bundle
 }
 
-
-installGit(){
-	if test ! $(which brew); then
-		installBrew
-	fi
-
-	echo "Installing Git"
-	brew install git
-}
 
 cloneRepo(){
 	if test ! $(which git); then
-		installGit
+		installBrew
 	fi
 
 	git clone https://github.com/yarthur/dotfiles ~/.dotfiles

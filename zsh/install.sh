@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-source $HOME/.dotfiles/lib/brew.sh
-
-brew_taps="zsh-autosuggestions zsh-completions zsh-syntax-highlighting"
 
 echo -e "\n\nZsh"
 echo "=============================="
@@ -25,5 +22,3 @@ if [ ! "$HOME/.oh-my-zsh" ]; then
 else
 	env ZSH=$ZSH sh $ZSH/tools/upgrade.sh
 fi
-
-handle_taps $brew_taps
