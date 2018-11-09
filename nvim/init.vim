@@ -90,6 +90,8 @@ set clipboard=unnamed
 " Recognize hidden tags files (.tags)
 set tags+=./.tags;,.tags;
 
+" disable Ruby support
+let g:loaded_ruby_provider = 1
 
 "-------------------- AutoCommands --------------------"
 " Auto Source on saving a config file.
