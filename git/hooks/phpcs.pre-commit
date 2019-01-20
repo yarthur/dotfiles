@@ -1,7 +1,7 @@
 #!/bin/sh
-# PP Code Sniffer Pre-Commit
+# PHP Code Sniffer Pre-Commit
 # If a PHP file is trying to be committed and it fails code sniffing,
-# then fail the commit
+# then fail the commit. Warnings will be allowed.
 
 EXIT_CODE=0
 COLOR_RED="\x1B[31m"
@@ -33,7 +33,10 @@ echo "${COLOR_BRIGHTWHITE}------------------${COLOR_NONE}"
 for file in $files; do
 	git show :$file | $command --stdin-path=$file
 
-	EXIT_CODE=$((${EXIT_CODE} + $?))
+	# If phpcs finds an error, it returns a value of "5". If that happens, set $EXIT_CODE to 1.
+	if [[ $? = 5 ]]; then
+		EXIT_CODE=1
+	fi
 done
 
 echo ""
