@@ -10,6 +10,7 @@ brew "git"
 brew "git-flow"
 brew "mas"
 brew "neovim"
+brew "node"
 brew "python3"
 brew "python@2"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
