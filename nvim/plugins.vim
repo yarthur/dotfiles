@@ -1,6 +1,7 @@
-" ----------------------------------------------------------------------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   Plug
-" ----------------------------------------------------------------------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Install vim-plug if we don't already have it
 let firstrun = 0
@@ -13,101 +14,48 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 
-" Theme/Appearance
-Plug 'altercation/vim-colors-solarized'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'Yggdroot/indentLine'
 
-" Linting/Syntax Checking/Test Runners
-Plug 'janko-m/vim-test'
-Plug 'tpope/vim-dispatch'
-Plug 'w0rp/ale'
-
-" Functionality
-Plug 'craigemery/vim-autotag'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'ervandew/supertab'
-Plug 'Raimondi/delimitMate'
-Plug 'scrooloose/nerdtree'
-Plug 'sirver/ultisnips' " Required for tobys/pdv
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'spf13/vim-autoclose'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'vim-scripts/IndexedSearch'
-Plug '/usr/local/opt/fzf'
-
-" VCS
-" Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/gv.vim'
-Plug 'low-ghost/nerdtree-fugitive'
-Plug 'mhinz/vim-signify'
-Plug 'sodapopcan/vim-twiggy'
-Plug 'tpope/vim-fugitive'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" --- LANGUAGE-SPECIFIC --- "
-" Blade Templates
-Plug 'jwalton512/vim-blade'
-
-" JS/JSON
-Plug 'carlitux/deoplete-ternjs'  " Deoplete completions for JS/Tern.
-Plug 'elzr/vim-json', {'for': 'json'}
-Plug 'jelera/vim-javascript-syntax'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
-Plug 'tpope/vim-jdaddy'
-
-" Markdown
-Plug 'plasticboy/vim-markdown'
-
-" PHP
-Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
-Plug 'arnaud-lb/vim-php-namespace', { 'for' : 'php' } " This one's for use statements.
-Plug 'dantleech/vim-phpnamespace', {'for': 'php'} " This one's for class namespaces. Integrated into Ultisnips!!
-Plug 'dantleech/vim-phpunit', {'for': 'php'}
-Plug 'joonty/vdebug', {'for': 'php'}
-Plug 'lvht/phpcd.vim', {'for': 'php'}
-" Plug 'padawan-php/padawan.vim', {'for': 'php'} " Requires padawan server, which requires php5.4+
-Plug 'Rican7/php-doc-modded', {'for': 'php'}
-Plug 'stanangeloff/php.vim', {'for': 'php'}
-
-" Twig
-Plug 'lumiliet/vim-twig', {'for': 'twig'}
-
-
-" --- OTHER --- "
-Plug 'ryanoasis/vim-devicons' " Put this last-ish, so that devicons integrate into everything else.
-Plug 'tobyS/vmustache' " Required for tobys/pdv
-
-
-filetype plugin indent on                   " required!
-call plug#end()
-
-
-" Plugin Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Airline
+" Theme/Appearance
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'altercation/vim-colors-solarized'
+set background=dark
+
+Plug 'vim-airline/vim-airline'
 source ~/.config/nvim/airline.vim
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#enable_refresh_always = 1
-let g:deoplete#max_abbr_width = 0
-let g:deoplete#max_menu_width = 0
-let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+Plug 'vim-airline/vim-airline-themes'
 
-let g:tern_request_timeout = 1
-let g:tern_request_timeout = 6000
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
+Plug 'Yggdroot/indentLine'
 
 
-" NERDTree
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Linting/Syntax Checking/Test Runners
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'janko-m/vim-test'
+let test#strategy = "dispatch_background"
+
+Plug 'tpope/vim-dispatch'
+
+Plug 'w0rp/ale'
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Functionality
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'craigemery/vim-autotag'
+
+Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'editorconfig/editorconfig-vim'
+
+Plug 'ervandew/supertab'
+
+Plug 'Raimondi/delimitMate'
+
+Plug 'scrooloose/nerdtree'
 " augroup NERDTreeAU
 	" autocmd!
 
@@ -119,31 +67,7 @@ let g:tern#arguments = ["--persistent"]
 	" autocmd FileType nerdtree setlocal list!
 " augroup END
 
-
-" php-doc-modded
-" Ripped from http://kushellig.de/vim-automatic-phpdoc/
-function! UpdatePhpDocIfExists()
-    normal! k
-    if getline('.') =~ '/'
-        normal! V%d
-    else
-        normal! j
-    endif
-    call PhpDocSingle()
-    normal! k^%k$
-    if getline('.') =~ ';'
-        exe "normal! $svoid"
-    endif
-endfunction
-nnoremap <leader>h :call UpdatePhpDocIfExists()<CR>
-
-
-" Solarized
-set background=dark
-colorscheme solarized
-
-
-" UltiSnips
+Plug 'sirver/ultisnips' " Required for tobys/pdv
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.dotfiles/nvim/UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -178,33 +102,98 @@ au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:U
 " CONFLICT with some plugins like tpope/Endwise
 " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" vim-autoclose
-let g:autoclose_vim_commentmode = 1  " If file type uses \" as comment, won't auto close them.
 
-" vim-commentary
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#max_abbr_width = 0
+let g:deoplete#max_menu_width = 0
+let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+
+let g:tern_request_timeout = 1
+let g:tern_request_timeout = 6000
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
+" Plug 'spf13/vim-autoclose'
+" let g:autoclose_vim_commentmode = 1  " If file type uses \" as comment, won't auto close them.
+
+Plug 'tpope/vim-commentary'
 augroup vimCommentary
     autocmd!
     autocmd FileType twig setlocal commentstring={#\ %s\ #}
 augroup END
 
-" vim-devicons
-" Needed for custom extension match
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
-" support for *.vue
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vue'] = '﵂'
+Plug 'tpope/vim-surround'
 
-" vim-json
+Plug 'vim-scripts/IndexedSearch'
+
+Plug '/usr/local/opt/fzf'
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VCS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/gv.vim'
+
+Plug 'low-ghost/nerdtree-fugitive'
+
+Plug 'mhinz/vim-signify'
+let g:signify_vcs_list = [ 'git', 'svn' ]   " These are the only VCS tools I need to worry about.
+let g:signify_realtime = 1  " I like it when my gutter updates in real time.
+
+Plug 'sodapopcan/vim-twiggy'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --- LANGUAGE-SPECIFIC --- "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Blade Templates
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'jwalton512/vim-blade'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" JS/JSON
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'carlitux/deoplete-ternjs'  " Deoplete completions for JS/Tern.
+
+Plug 'elzr/vim-json', {'for': 'json'}
 let g:vim_json_syntax_conceal = 0  " Prevent quotes from being hidden.
 
-" vim-phpcomplete
-let g:phpcomplete_min_num_of_chars_for_namespace_completion = 3  " Type at least 3 characters for completion to kick in.
-let g:phpcomplete_parse_docblock_comments = 1  " Parses docblock comments, and presents improved meta data.
+Plug 'jelera/vim-javascript-syntax'
 
-" vim-phpnamespace
-nnoremap <silent><leader>nn :call PhpNamespaceInsert()<CR>
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+
+Plug 'tpope/vim-jdaddy'
 
 
-" vim-php-namespace
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Markdown
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'plasticboy/vim-markdown'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PHP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
+
+Plug 'arnaud-lb/vim-php-namespace', { 'for' : 'php' } " This one's for use statements.
 function! IPhpInsertUse()
     call PhpInsertUse()
     call feedkeys('a',  'n')
@@ -216,11 +205,64 @@ augroup vimPhpNamespace
 	autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 augroup END
 
+Plug 'dantleech/vim-phpnamespace', {'for': 'php'} " This one's for class namespaces. Integrated into Ultisnips!!
+nnoremap <silent><leader>nn :call PhpNamespaceInsert()<CR>
 
-" vim-signify
-let g:signify_vcs_list = [ 'git', 'svn' ]   " These are the only VCS tools I need to worry about.
-let g:signify_realtime = 1  " I like it when my gutter updates in real time.
+Plug 'dantleech/vim-phpunit', {'for': 'php'}
+
+Plug 'joonty/vdebug', {'for': 'php'}
+
+Plug 'lvht/phpcd.vim', {'for': 'php'}
+"
+" Plug 'padawan-php/padawan.vim', {'for': 'php'} " Requires padawan server, which requires php5.4+
+
+Plug 'Rican7/php-doc-modded', {'for': 'php'}
+" Ripped from http://kushellig.de/vim-automatic-phpdoc/
+function! UpdatePhpDocIfExists()
+    normal! k
+    if getline('.') =~ '/'
+        normal! V%d
+    else
+        normal! j
+    endif
+    call PhpDocSingle()
+    normal! k^%k$
+    if getline('.') =~ ';'
+        exe "normal! $svoid"
+    endif
+endfunction
+nnoremap <leader>h :call UpdatePhpDocIfExists()<CR>
+
+Plug 'stanangeloff/php.vim', {'for': 'php'}
 
 
-" vim-test
-let test#strategy = "dispatch_background"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Twig
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'lumiliet/vim-twig', {'for': 'twig'}
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --- OTHER --- "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'ryanoasis/vim-devicons' " Put this last-ish, so that devicons integrate into everything else.
+" Needed for custom extension match
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+" support for *.vue
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vue'] = '﵂'
+
+Plug 'tobyS/vmustache' " Required for tobys/pdv
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" End Plug
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+filetype plugin indent on                   " required!
+call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --- AND FINALLY ---
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme solarized
