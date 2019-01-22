@@ -55,7 +55,8 @@ plugins=(brew composer cp extract git git-flow laravel4 npm nvim osx sublime sud
 
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
-export PATH="~/.composer/vendor/bin:$PATH"
+export PHP_INI_SCAN_DIR="$HOME/.dotfiles/php:$PHP_INI_SCAN_DIR"
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
