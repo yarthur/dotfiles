@@ -37,6 +37,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/IndexedSearch'
+Plug '/usr/local/opt/fzf'
 
 " VCS
 " Plug 'airblade/vim-gitgutter'
@@ -105,16 +106,16 @@ let g:tern#arguments = ["--persistent"]
 
 
 " NERDTree
-augroup NERDTreeAU
-	autocmd!
+" augroup NERDTreeAU
+	" autocmd!
 
 	"	Start with NERDTreeCWD when opening without a file
-	autocmd StdinReadPre * let s:std_in=1
-	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTreeCWD | endif
+	" autocmd StdinReadPre * let s:std_in=1
+	" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTreeCWD | endif
 	"	Close vim completely if nothing but NERDTree is open.
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-	autocmd FileType nerdtree setlocal list!
-augroup END
+	" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+	" autocmd FileType nerdtree setlocal list!
+" augroup END
 
 
 " php-doc-modded
