@@ -111,3 +111,7 @@ au BufNewFile,BufRead *.mjs set filetype=javascript
 
 " Ignore whitespace on diff.
 set diffopt=filler,iwhite
+
+
+" Associate .vue files with the correct languages.
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css

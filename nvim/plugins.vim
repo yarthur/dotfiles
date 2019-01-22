@@ -184,6 +184,12 @@ augroup vimCommentary
     autocmd FileType twig setlocal commentstring={#\ %s\ #}
 augroup END
 
+" vim-devicons
+" Needed for custom extension match
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+" support for *.vue
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vue'] = '﵂'
+
 " vim-json
 let g:vim_json_syntax_conceal = 0  " Prevent quotes from being hidden.
 
