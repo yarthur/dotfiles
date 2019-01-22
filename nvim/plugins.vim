@@ -41,8 +41,10 @@ Plug '/usr/local/opt/fzf'
 
 " VCS
 " Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/gv.vim'
 Plug 'low-ghost/nerdtree-fugitive'
 Plug 'mhinz/vim-signify'
+Plug 'sodapopcan/vim-twiggy'
 Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
