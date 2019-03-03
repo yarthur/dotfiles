@@ -53,6 +53,9 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'ervandew/supertab'
 
+Plug 'mtth/scratch.vim'
+let g:scratch_height=25
+
 Plug 'Raimondi/delimitMate'
 
 Plug 'scrooloose/nerdtree'
