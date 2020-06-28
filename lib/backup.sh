@@ -3,7 +3,7 @@
 echo "\nCreating backup"
 echo "=============================="
 
-config_dir="$HOME/.dotfiles"
+config_dir="$HOME/.config/dotfiles"
 backup_dir=$config_dir/backup
 file_ext='.symlink'
 

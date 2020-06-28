@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-config_files="$HOME/.dotfiles"
+config_files="$HOME/.config/dotfiles"
 
 echo -e "\n\nGit"
 echo -e "=============================="
@@ -11,5 +11,5 @@ fi
 
 # Link this directory to ~/.config/git
 if [ ! -h $HOME/.config/git ]; then
-	ln -s $HOME/.dotfiles/git $HOME/.config/git
+	ln -s $config_files/git $HOME/.config/git
 fi

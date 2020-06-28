@@ -1,7 +1,7 @@
 [color]
 	ui = true
 [commit]
-	template = ~/.dotfiles/git/stCommitMsg.txt
+	template = ~/.config/dotfiles/git/stCommitMsg.txt
 [core]
 	editor = vim
 	pager = "diff-so-fancy | less --tabs=4 -RFX"
@@ -11,10 +11,12 @@
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [init]
-	templatedir = ~/.dotfiles/git/templates
+	templatedir = ~/.config/dotfiles/git/templates
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[pull]
+	rebase = false
 [push]
 	default = simple
 ; [url "https://"]

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-config_files="$HOME/.dotfiles"
+config_files="$HOME/.config/dotfiles"
 
 echo -e "\n\nComposer"
 echo "=============================="
