@@ -4,6 +4,11 @@ set -e
 
 PATH="/usr/local/bin:$PATH"
 dir="$(git rev-parse --git-dir)"
+
+
+# Don't run on repos outside $HOME (like Homebrew)
+if [ "$dir" == "*$HOME*" ]; then exit; fi
+
 trap 'rm -f "$dir/$$.tags"' EXIT
 
 ctags --tag-relative=yes -R -f "$dir/$$.tags" --fields=+aimlS --languages=php --PHP-kinds=+cdfint-av --exclude=composer.phar --exclude=*Test.php --exclude=*phpunit* --exclude="\.git"

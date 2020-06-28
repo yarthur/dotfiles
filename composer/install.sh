@@ -1,17 +1,20 @@
 #!/usr/bin/env bash
-config_files="$HOME/.config/dotfiles"
+
+if [ "$separator" = "" ]; then
+	source "$(dirname "$0")"/../lib/env.sh
+fi
 
 echo -e "\n\nComposer"
-echo "=============================="
+echo $separator
 
 # If the composer dir exists, but isn't symlinked to this version, back up and remove.
-if [ ! "$(readlink $HOME/.composer)" = "$config_files/composer" ]; then
-	$config_files/lib/backup.sh ~/.composer
+if [ ! "$(readlink $HOME/.composer)" = "$DOTFILES_HOME/composer" ]; then
+	$DOTFILES_LIB/backup.sh ~/.composer
 fi
 
 # Link this directory to ~/.composer
 if [ ! -h $HOME/.composer ]; then
-	ln -s $config_files/composer $HOME/.composer
+	ln -s $DOTFILES_HOME/composer $HOME/.composer
 fi
 
 echo -e "Installing/Upgrading global Composer packages."

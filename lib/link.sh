@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
-config_dir="$HOME/.config/dotfiles"
-backup_dir=$config_dir/backup
+if [ "$separator" = "" ]; then
+	source "$(dirname "$0")"/env.sh
+fi
+
+backup_dir=$DOTFILES_HOME/backup
 file_ext='.symlink'
 
 echo "Creating symlinks"
-echo "=============================="
+echo $separator
 
-linkables=$( find -H "$config_dir" -maxdepth 3 -name "*$file_ext" )
-
+linkables=$( find -H "$DOTFILES_HOME" -name "*$file_ext" )
 for file in $linkables ; do
 	target="$HOME/.$( basename $file "$file_ext" )"
 

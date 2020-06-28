@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-echo "\nCreating backup"
-echo "=============================="
+if [ "$separator" = "" ]; then
+	source "$(dirname "$0")"/env.sh
+fi
 
-config_dir="$HOME/.config/dotfiles"
-backup_dir=$config_dir/backup
+echo "Creating backup"
+echo $separator
+
+backup_dir=$DOTFILES_HOME/backup
 file_ext='.symlink'
 
 if [ ! -d $backup_dir ]; then
@@ -13,7 +16,7 @@ if [ ! -d $backup_dir ]; then
 	mkdir $backup_dir
 fi
 
-linkables=$( find -H "$config_dir" -maxdepth 3 -name "*$file_ext" )
+linkables=$( find -H "$DOTFILES_HOME" -name "*$file_ext" )
 
 for file in $linkables; do
 	filename=".$( basename $file "$file_ext" )"
