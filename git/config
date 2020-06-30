@@ -10,17 +10,19 @@
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
 [init]
 	templatedir = ~/.config/dotfiles/git/templates
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
 [pull]
 	rebase = false
 [push]
 	default = simple
-; [url "https://"]
-; 	insteadOf = git://
 [user]
 	name = John Arthur
 	email = john@jtarthur.net
