@@ -51,6 +51,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'editorconfig/editorconfig-vim'
 
+Plug 'editorconfig/editorconfig-vim'
+
 Plug 'ervandew/supertab'
 
 Plug 'mtth/scratch.vim'
