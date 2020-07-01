@@ -4,3 +4,6 @@
 [submodule "colors/PhpStorm-Solarized"]
 	path = colors/PhpStorm-Solarized
 	url = https://github.com/braver/PhpStorm-Solarized
+[submodule "zsh/custom/plugins/moo-my-zsh"]
+	path = zsh/custom/plugins/moo-my-zsh
+	url = ssh://git@bitbucket.mutualofomaha.com:7999/mac/moo-my-zsh.git
