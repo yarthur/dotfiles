@@ -62,7 +62,7 @@ ZSH_THEME="agnoster"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-ZSH_CUSTOM=$DOTFILES_HOME/zsh/custom
+ZSH_CUSTOM=$HOME/.config/dotfiles/zsh/custom
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -80,7 +80,6 @@ plugins=(
 	git
 	git-flow
 	npm
-	nvim
 	osx
 	sublime
 	sudo
@@ -119,19 +118,19 @@ export PHP_INI_SCAN_DIR="$DOTFILES_HOME/php:$PHP_INI_SCAN_DIR"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source "$ZSH_CUSTOM/alias.zsh"
 
-# Git log with dates, as opposed to relative time elapsed.
-alias glob='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
-alias globa='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --all'
+# VIM Mode settings
+source "$ZSH_CUSTOM/vi-mode.zsh"
+
+# Custom Prompt
+source "$ZSH_CUSTOM/prompt.zsh"
 
 # github.com/rupa/z
 . /usr/local/etc/profile.d/z.sh
 
 # Brew Zsh Completions
 fpath=(/usr/local/share/zsh-completions $fpath)
-
-# Custom Prompt
-source $ZSH_CUSTOM/prompt.zsh
 
 # Default User Name
 DEFAULT_USER=`whoami`
