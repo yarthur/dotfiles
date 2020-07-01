@@ -79,6 +79,7 @@ plugins=(
 	extract
 	git
 	git-flow
+	moo-my-zsh
 	npm
 	osx
 	sublime
