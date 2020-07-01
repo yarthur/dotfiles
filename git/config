@@ -60,3 +60,6 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	required = true
+	
+ [includeIf "gitdir/i:~/Repos/**"]
+ 	path = ~/.config/git/config-moo
