@@ -93,6 +93,9 @@ set tags+=./.tags;,.tags;
 " disable Ruby support
 let g:loaded_ruby_provider = 1
 
+" set text conceal to apply only to normal and command line modes
+set concealcursor=nc
+
 "-------------------- AutoCommands --------------------"
 " Auto Source on saving a config file.
 " Hat tip [Jeffrey
@@ -101,7 +104,7 @@ augroup autosourcing
 	autocmd!
 
 	" Source if any .vim file within ~/.dotfiles/vim is edited and saved.
-	autocmd BufWritePost ~/.dotfiles/nvim/*.vim source ~/.dotfiles/nvim/init.vim
+	autocmd BufWritePost ~/.config/dotfiles/nvim/*.vim source ~/.dotfiles/nvim/init.vim
 augroup END
 
 
@@ -115,3 +118,6 @@ set diffopt=filler,iwhite
 
 " Associate .vue files with the correct languages.
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+
+" Allow comment highlighting in JSON
+autocmd FileType json syntax match Comment +\/\/.\+$+

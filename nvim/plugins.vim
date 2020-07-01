@@ -21,13 +21,64 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'altercation/vim-colors-solarized'
 set background=dark
 
-Plug 'vim-airline/vim-airline'
-source ~/.config/nvim/airline.vim
-
-Plug 'vim-airline/vim-airline-themes'
+" LightLine {{{
+	Plug 'itchyny/lightline.vim'
+	let g:lightline = {
+		\   'colorscheme': 'solarized',
+		\   'active': {
+		\       'left': [ [ 'mode', 'paste' ],
+		\               [ 'gitbranch' ],
+		\               [ 'readonly', 'filetype', 'filename' ]],
+		\       'right': [ [ 'percent' ], [ 'lineinfo' ],
+		\               [ 'fileencoding' ],
+		\               [ 'gitblame', 'currentfunction', 'cocstatus', 'linter_errors', 'linter_warnings' ]]
+		\   },
+		\   'component_expand': {
+		\   },
+		\   'component_type': {
+		\       'readonly': 'error',
+		\       'linter_warnings': 'warning',
+		\       'linter_errors': 'error'
+		\   },
+		\   'component_function': {
+		\       'cocstatus': 'coc#status',
+		\       'currentfunction': 'helpers#lightline#currentFunctin',
+		\       'fileencoding': 'helpers#lightline#fileEncoding',
+		\       'filename': 'helpers#lightline#fileName',
+		\       'filetype': 'helpers#lightline#fileType',
+		\       'gitblame': 'helpers#lightline#gitBlame',
+		\       'gitbranch': 'helpers#lightline#gitBranch',
+		\       'readonly': 'helpers#lightline#readonly',
+		\   },
+		\   'mode_map': {
+		\       'n' : 'N',
+		\       'i' : 'I',
+		\       'R' : 'R',
+		\       'v' : 'V',
+		\       'V' : 'VL',
+		\       "\<C-v>": 'VB',
+		\       'c' : 'C',
+		\       's' : 'S',
+		\       'S' : 'SL',
+		\       "\<C-s>": 'SB',
+		\       't': 'T',
+		\   },
+		\   'tabline': {
+		\       'left': [ [ 'tabs' ] ],
+		\       'right': [ [ 'close' ] ]
+		\   },
+		\   'tab': {
+		\       'active': [ 'filename', 'modified' ],
+		\       'inactive': [ 'filename', 'modified' ],
+		\   },
+	   \   'separator': { 'left': '', 'right': '' },
+	   \   'subseparator': { 'left': '', 'right': '' }
+	\ }
+" }}}
 
 Plug 'Yggdroot/indentLine'
-
+" allow syntax concealment in normal and command modes (allows you to see concealed content in insert and visual modes
+let g:indentLine_concealcursor = 'nc'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -36,10 +87,45 @@ Plug 'Yggdroot/indentLine'
 Plug 'janko-m/vim-test'
 let test#strategy = "dispatch_background"
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+let g:coc_global_extensions = [
+\    'coc-css',
+\    'coc-diagnostic',
+\    'coc-eslint',
+\    'coc-explorer',
+\    'coc-git',
+\    'coc-html',
+\    'coc-json',
+\    'coc-marketplace',
+\    'coc-pairs',
+\    'coc-phpls',
+\    'coc-prettier',
+\    'coc-snippets',
+\    'coc-stylelintplus',
+\    'coc-vetur',
+\    'coc-yaml',
+\ ]
+"
+" Open coc-explorer with <space>e
+nmap <space>e :CocCommand explorer<CR>
+
+" Prettier formats file on save
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+
+" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+let g:coc_snippet_next = '<tab>'
+
 Plug 'tpope/vim-dispatch'
-
-Plug 'w0rp/ale'
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -60,71 +146,7 @@ let g:scratch_height=25
 
 Plug 'Raimondi/delimitMate'
 
-Plug 'scrooloose/nerdtree'
-" augroup NERDTreeAU
-	" autocmd!
-
-	"	Start with NERDTreeCWD when opening without a file
-	" autocmd StdinReadPre * let s:std_in=1
-	" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTreeCWD | endif
-	"	Close vim completely if nothing but NERDTree is open.
-	" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-	" autocmd FileType nerdtree setlocal list!
-" augroup END
-
-Plug 'sirver/ultisnips' " Required for tobys/pdv
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.dotfiles/nvim/UltiSnips']
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsEditSplit="vertical"
-" UltiSnips completion function that tries to expand a snippet. If there's no
-" snippet for expanding, it checks for completion window and if it's
-" shown, selects first element. If there's no completion window it tries to
-" jump to next placeholder. If there's no placeholder it just returns TAB key 
-" Source: <https://github.com/Valloric/YouCompleteMe/issues/36#issuecomment-15451411>
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-" Apply the above function
-" Source: <https://stackoverflow.com/a/18685821>
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsListSnippets="<c-e>"
-" this mapping Enter key to <C-y> to chose the current highlight item 
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#enable_refresh_always = 1
-let g:deoplete#max_abbr_width = 0
-let g:deoplete#max_menu_width = 0
-let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-
-let g:tern_request_timeout = 1
-let g:tern_request_timeout = 6000
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-
-" Plug 'spf13/vim-autoclose'
-" let g:autoclose_vim_commentmode = 1  " If file type uses \" as comment, won't auto close them.
+Plug 'tpope/vim-abolish'
 
 Plug 'tpope/vim-commentary'
 augroup vimCommentary
@@ -148,10 +170,6 @@ Plug 'junegunn/gv.vim'
 
 Plug 'low-ghost/nerdtree-fugitive'
 
-Plug 'mhinz/vim-signify'
-let g:signify_vcs_list = [ 'git', 'svn' ]   " These are the only VCS tools I need to worry about.
-let g:signify_realtime = 1  " I like it when my gutter updates in real time.
-
 Plug 'sodapopcan/vim-twiggy'
 
 Plug 'tpope/vim-fugitive'
@@ -172,14 +190,18 @@ Plug 'jwalton512/vim-blade'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Jenkinsfile
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'thanethomson/vim-jenkinsfile', {'for': 'Jenkinsfile'}
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JS/JSON
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'carlitux/deoplete-ternjs'  " Deoplete completions for JS/Tern.
-
 Plug 'elzr/vim-json', {'for': 'json'}
 let g:vim_json_syntax_conceal = 0  " Prevent quotes from being hidden.
 
-Plug 'jelera/vim-javascript-syntax'
+Plug 'othree/yajs.vim', { 'for': [ 'javascript', 'javascript.jsx', 'html' ] }
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 
@@ -219,8 +241,6 @@ Plug 'joonty/vdebug', {'for': 'php'}
 
 Plug 'lvht/phpcd.vim', {'for': 'php'}
 "
-" Plug 'padawan-php/padawan.vim', {'for': 'php'} " Requires padawan server, which requires php5.4+
-
 Plug 'Rican7/php-doc-modded', {'for': 'php'}
 " Ripped from http://kushellig.de/vim-automatic-phpdoc/
 function! UpdatePhpDocIfExists()
@@ -256,8 +276,6 @@ Plug 'ryanoasis/vim-devicons' " Put this last-ish, so that devicons integrate in
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
 " support for *.vue
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vue'] = '﵂'
-
-Plug 'tobyS/vmustache' " Required for tobys/pdv
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
