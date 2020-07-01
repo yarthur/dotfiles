@@ -16,3 +16,6 @@ nvim/autoload
 nvim/backups
 nvim/plugged
 nvim/undo
+
+# We generate the terminfo file through the install script.
+*.terminfo

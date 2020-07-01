@@ -1,8 +1,0 @@
-# An xterm-256color based TERMINFO that adds the escape sequences for italic.
-# Hats tipped to:
-#	http://stackoverflow.com/questions/38723518/how-to-use-the-operator-font-with-neovim#38765841
-#	https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/#tmux-21-and-above
-
-xterm-256color-italic|xterm with 256 colors and italic,
-  sitm=\E[3m, ritm=\E[23m,
-  use=xterm-256color,
