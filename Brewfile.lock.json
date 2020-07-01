@@ -271,6 +271,18 @@
       }
     },
     "cask": {
+      "abstract": {
+        "version": "93.0.2",
+        "options": {
+          "full_name": "abstract"
+        }
+      },
+      "adobe-creative-cloud": {
+        "version": "5.2.0.436",
+        "options": {
+          "full_name": "adobe-creative-cloud"
+        }
+      },
       "choosy": {
         "version": "2.1",
         "options": {
@@ -313,6 +325,12 @@
           "full_name": "iterm2"
         }
       },
+      "jetbrains-toolbox": {
+        "version": "1.17.7139",
+        "options": {
+          "full_name": "jetbrains-toolbox"
+        }
+      },
       "nvalt": {
         "version": "2.2.8-128",
         "options": {
@@ -323,6 +341,12 @@
         "version": "7.27.1",
         "options": {
           "full_name": "postman"
+        }
+      },
+      "sketch": {
+        "version": "66.1-97080",
+        "options": {
+          "full_name": "sketch"
         }
       },
       "sourcetree": {
