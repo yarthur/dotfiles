@@ -274,7 +274,13 @@
       "choosy": {
         "version": "2.1",
         "options": {
-          "full_name": "Choosy"
+          "full_name": "choosy"
+        }
+      },
+      "discord": {
+        "version": "0.0.257",
+        "options": {
+          "full_name": "discord"
         }
       },
       "docker": {
