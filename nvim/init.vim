@@ -90,6 +90,12 @@ set clipboard=unnamed
 " Recognize hidden tags files (.tags)
 set tags+=./.tags;,.tags;
 
+" disable Python2 support
+let g:loaded_python_provider = 0
+
+" improve Python3 support
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " disable Ruby support
 let g:loaded_ruby_provider = 1
 
