@@ -3,7 +3,6 @@ set nocompatible              " be iMproved, required
 
 " load plugins from vundle
 source ~/.config/nvim/plugins.vim
-
 source ~/.config/nvim/mappings.vim
 
 
@@ -117,6 +116,9 @@ augroup END
 " Associate *.mjs files as Javascript Files
 " (*.mjs is the current Node convention, I guess?)
 au BufNewFile,BufRead *.mjs set filetype=javascript
+
+" Associate *.zsh-theme files as zsh filetype
+au BufNewFile,BufRead *.zsh-theme set filetype=zsh
 
 " Ignore whitespace on diff.
 set diffopt=filler,iwhite

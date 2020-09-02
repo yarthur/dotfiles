@@ -1,3 +1,5 @@
+source $ZSH/themes/agnoster.zsh-theme
+
 prompt_dir(){
   git_root=$PWD
   while [[ $git_root != / && ! -e $git_root/.git ]]; do

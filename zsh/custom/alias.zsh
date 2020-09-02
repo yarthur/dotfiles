@@ -1,3 +1,7 @@
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
 # Use NeoVim instead of ViM
 alias vi=nvim
 alias vim=nvim
