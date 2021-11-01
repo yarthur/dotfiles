@@ -1,6 +1,7 @@
 {
     "config": {
-    },
+		"cafile": "/usr/local/etc/openssl@1.1/cert.pem"
+	},
     "repositories": {
         "packagist": {
             "type": "composer",
