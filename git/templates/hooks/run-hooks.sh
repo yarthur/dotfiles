@@ -3,6 +3,11 @@
 
 EXIT_CODE=0
 
+# Only execute if the repo is in the home directory.
+if [[ $GIT_DIR != $HOME* ]]; then
+	exit $((${EXIT_CODE}))
+fi
+
 repo=$( git rev-parse --show-toplevel )
 hook_type=$( basename $0 )
 hooks=~/.config/dotfiles/git/hooks

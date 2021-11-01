@@ -5,7 +5,6 @@ set -e
 PATH="/usr/local/bin:$PATH"
 dir="$(git rev-parse --git-dir)"
 
-
 # Don't run on repos outside $HOME (like Homebrew)
 if [ "$dir" == "*$HOME*" ]; then exit; fi
 
