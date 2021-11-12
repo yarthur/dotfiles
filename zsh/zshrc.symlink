@@ -79,8 +79,8 @@ plugins=(
 	extract
 	git
 	git-flow
+	macos
 	npm
-	osx
 	sublime
 	sudo
 	vundle
