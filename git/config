@@ -28,6 +28,9 @@
 	name = John Arthur
 	email = john@jtarthur.net
 [alias]
+	# List all branches w/ last commit date, sorted latest to oldest
+	branchaudit = "branch -a --sort=-committerdate --format=' %(authordate:relative)%09%(refname:short)'"
+
 	# Who is winning the repo?
 	leaderboard = "shortlog -sn"
 
