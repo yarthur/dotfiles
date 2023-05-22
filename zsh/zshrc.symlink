@@ -79,7 +79,6 @@ plugins=(
 	git
 	git-flow
 	macos
-	moo-my-zsh
 	npm
 	nvm
 	sudo
