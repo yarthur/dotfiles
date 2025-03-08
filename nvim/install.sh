@@ -23,8 +23,7 @@ fi
 
 echo "Installing/Upgrading Plugins"
 
-pip2 install -U neovim
 pip3 install -U neovim
 npm uninstall -g neovim && npm install -g neovim
 
-nvim +PlugInstall! +PlugClean +qall
+nvim +Lazy sync +qall

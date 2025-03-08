@@ -29,14 +29,9 @@ require("lazy").setup({
 	-- indentation guide lines
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		config = function () 
-			require("indent_blankline").setup {
-				char = "·",
-				char_highlight_list = {
-					"normal"
-				}
-			}
-		end,
+		main="ibl",
+		opts = {
+		},
 	},
 
 	{'gpanders/editorconfig.nvim', lazy = false },
@@ -49,6 +44,16 @@ require("lazy").setup({
 			{'nvim-lua/plenary.nvim'},
 			{'nvim-telescope/telescope-fzf-native.nvim'}
 		}
+	},
+
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	},
+
+	{
+		"keyvchan/telescope-find-pickers.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
 	},
 
 	-- Automatic closing of ", (, etc

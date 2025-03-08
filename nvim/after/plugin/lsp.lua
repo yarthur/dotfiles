@@ -23,11 +23,10 @@ mLC.setup({
 		"jsonls",
 		-- JS
 		"quick_lint_js",
-		"tsserver",
+		"vuels",
 		-- Markdown
 		"marksman",
 		"prosemd_lsp",
-		"remark_ls",
 		"zk",
 		-- PHP
 		"intelephense",
@@ -38,6 +37,11 @@ mLC.setup({
 	}
 })
 
+mLC.setup_handlers({
+	function (server_name) -- default handler (optional)
+		require("lspconfig")[server_name].setup({})
+	end,
+})
 
 -- -------------------------
 -- -- RisabhRD/nvim-lsputils

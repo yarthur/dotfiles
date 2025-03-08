@@ -48,7 +48,7 @@ cmp.setup({
 					nvim_lua = "[NViM Lua]",
 					buffer = "[Buffer]",
 					path = "[Path]",
-					cmdline = "[CLI]",
+					-- cmdline = "[CLI]",
 				})[entry.source.name]
 				return vim_item
 			end
@@ -112,7 +112,7 @@ cmp.setup({
 		{ name = 'luasnip' },
 		{ name = 'buffer' },
 		{ name = 'path' },
-		{ name = 'cmdline' },
+		-- { name = 'cmdline' },
 	}),
 	window = {
 		completion = cmp.config.window.bordered(),
