@@ -75,7 +75,6 @@ plugins=(
 	cp
 	docker
 	docker-compose
-	docker-machine
 	extract
 	git
 	git-flow
