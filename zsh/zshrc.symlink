@@ -76,6 +76,7 @@ plugins=(
 	docker
 	docker-compose
 	extract
+	gh
 	git
 	git-flow
 	macos
@@ -130,4 +131,8 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export NODE_EXTRA_CA_CERTS="${HOME}/Repos/certs/zscalerrootcert.pem"
+export NODE_EXTRA_CA_CERTS="${HOME}/Repos/certs/useThisCert.pem"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/john.arthur/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
