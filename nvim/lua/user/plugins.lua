@@ -151,5 +151,9 @@ require("lazy").setup({
 	-- 'p00f/nvim-ts-rainbow',
 
 	"AndrewRadev/splitjoin.vim",
+
+
+	-- CoPilot
+	"github/copilot.vim"
 })
 
