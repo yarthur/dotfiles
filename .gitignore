@@ -11,6 +11,9 @@ composer/*
 !composer/composer.json
 !composer/config.json
 
+# GitHub CLI
+gh/hosts.yml
+
 # Neovim
 nvim/autoload
 nvim/backups
