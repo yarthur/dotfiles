@@ -1,32 +1,67 @@
+[include]
+	path = /usr/local/bin/delta/themes.gitconfig
+
 [color]
 	ui = true
+
 [commit]
 	template = ~/.config/dotfiles/git/stCommitMsg.txt
+
 [core]
 	editor = vim
-	pager = "diff-so-fancy | less --tabs=4 -RFX"
+	pager = delta
+
 [credential]
 	helper = osxkeychain
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+
+[delta]
+	navigate = true	# use n and N to move between diff sections
+	features = unobtrusive-line-numbers decorations
+	whitespace-error-style = 22 reverse
+	syntax-theme = base16-256
+
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
+	hunk-header-decoration-style = yellow box
+
+[delta "unobtrusive-line-numbers"]
+	line-numbers = true
+	line-numbers-left-format = "{nm:>4}┊"
+	line-numbers-right-format = "{np:>4}│"
+	line-numbers-left-style = blue
+	line-numbers-right-style = blue
+
+[diff]
+	mnemonicprefix = true
+
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
+
 [init]
 	defaultBranch = main
 	templatedir = ~/.config/dotfiles/git/templates
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+
+[interactive]
+	diffFilter = delta --color-only
+
+[merge]
+	conflictstyle = zdiff3
+
 [mergetool "vscode"]
-    cmd = code --wait $MERGED
+	cmd = code --wait $MERGED
+
 [pull]
 	rebase = false
+
 [push]
 	default = simple
+
 [user]
 	name = John Arthur
 	email = john@jtarthur.net
+
 [alias]
 	# List all branches w/ last commit date, sorted latest to oldest
 	branchaudit = "branch -a --sort=-committerdate --format=' %(authordate:relative)%09%(refname:short)'"
@@ -36,30 +71,31 @@
 
 	#	#	#
 	# Cribbed from http://www.theodo.fr/blog/2017/06/git-game-advanced-git-aliases/
-		# Shortened Status
-		st = status -sb
+	# Shortened Status
+	st = status -sb
 
-		# Pop your last commit out of the history! No change lost, just unindexed
-		pop = reset HEAD^
+	# Pop your last commit out of the history! No change lost, just unindexed
+	pop = reset HEAD^
 
-		# Fix your last commit without prompting an editor
-		oops = commit --amend --no-edit
+	# Fix your last commit without prompting an editor
+	oops = commit --amend --no-edit
 
-		# Add a file/directory to your .gitignore
-		ignore = "!f() { echo \"$1\" >> .gitignore; }; f"
+	# Add a file/directory to your .gitignore
+	ignore = "!f() { echo \"$1\" >> .gitignore; }; f"
 
-		# A more concise and readable git log
-		ls = log --pretty=format:"%C(yellow)%h\\ %Creset%s%Cblue\\ [%cn]\\%Cred%d" --decorate
+	# A more concise and readable git log
+	ls = log --pretty=format:"%C(yellow)%h\\ %Creset%s%Cblue\\ [%cn]\\%Cred%d" --decorate
 
-		# Same as above, with files changed in each commit
-		ll = !git ls --numstat
+	# Same as above, with files changed in each commit
+	ll = !git ls --numstat
 
-		# Print the last commit title & hash
-		last = !git log --since yesterday --author $(git config user.email) --pretty=short
+	# Print the last commit title & hash
+	last = !git log --since yesterday --author $(git config user.email) --pretty=short
 
-		# Show what you've done since yesterday to prepare your standup
-		standup = !git log --since yesterday --author $(git config user.email) --pretty=short
+	# Show what you've done since yesterday to prepare your standup
+	standup = !git log --since yesterday --author $(git config user.email) --pretty=short
 	#	#	#
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
