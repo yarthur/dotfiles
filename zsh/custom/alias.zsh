@@ -13,7 +13,7 @@ alias globa='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 alias treadme='touch README.md'
 
 alias compup='$(which php) -d memory_limit=-1 $(which composer) update -v'
-#
+
 # Run Docker Locally
-alias rdl='docker run -v `pwd`:/var/www -it --rm repo.mutualofomaha.com:5003/com.mutualofomaha.mac/base:7.3'
-alias rdl8='docker run -v `pwd`:/var/www -it --rm repo.mutualofomaha.com:5003/com.mutualofomaha.mac/base:8.0'
+alias rdl7='docker run -v `pwd`:/var/www -it --rm repo.mutualofomaha.com:5003/com.mutualofomaha.mac/base:7.3'
+alias rdl='docker run -v `pwd`:/var/www -it --rm repo.mutualofomaha.com:5003/com.mutualofomaha.mac/base:8.0'
