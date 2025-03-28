@@ -13,6 +13,13 @@ pager:
 # Aliases allow you to create nicknames for gh commands
 aliases:
     co: pr checkout
+    # Search all open PRs assigned to me.
+    myPrs: search prs --assignee=@me --state=open
+    # Search all open PRs that I'm requested to review.
+    needsReview: search prs --review-requested=@me --state=open
+    # Create a new PR, assigned to me, using the commit message as the title and body.
+    newPR: pr create --assignee=@me --fill
+
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.
