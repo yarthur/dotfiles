@@ -24,4 +24,8 @@ nvim/undo
 *.terminfo
 
 # ZSH
-zsh/custom/plugins
+zsh
+!zsh/.zshenv
+!zsh/.zshrc
+!zsh/install.sh
+!zsh/zsh_plugins.txt
