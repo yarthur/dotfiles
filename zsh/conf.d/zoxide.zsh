@@ -143,7 +143,6 @@ if [[ -o zle ]]; then
 fi
 
 # =============================================================================
-#
+
 # To initialize zoxide, add this to your shell configuration file (usually ~/.zshrc):
-#
-# eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"

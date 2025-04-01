@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 if [ "$separator" = "" ]; then
 	source "$(dirname "$0")"/../lib/env.sh
 fi
@@ -21,18 +20,12 @@ if [ ! "$SHELL" = "$zsh_path" ]; then
 	chsh -s $zsh_path
 fi
 
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-	echo "Installing Oh My Zsh"
+# If the zsh config dir exists, but isn't symlinked to this version, back up and remove.
+if [ ! "$(readlink $XDG_CONFIG_HOME/zsh)" = "$DOTFILES_HOME/zsh" ]; then
+	$DOTFILES_LIB/backup.sh $XDG_CONFIG_HOME/zsh
+fi
 
-	curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
-	
-	echo [ -f "$HOME/.zshrc.pre-oh-my-zsh" ]
-	if [ -f "$HOME/.zshrc.pre-oh-my-zsh" ]; then
-		echo "Let's make sure our .zshrc file is linked up."
-		mv $HOME/.zshrc.pre-oh-my-zsh $DOTFILES_HOME/backup
-		sh -c $DOTFILES_LIB/link.sh
-	fi		
-else
-	echo "Updating Oh My Zsh"
-	env ZSH=$ZSH sh $ZSH/tools/upgrade.sh
+# Link this directory to ~/.config/zsh
+if [ ! -h $XDG_CONFIG_HOME/zsh ]; then
+	ln -s $DOTFILES_HOME/zsh $XDG_CONFIG_HOME/zsh
 fi
