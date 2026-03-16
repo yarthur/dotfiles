@@ -77,3 +77,26 @@ vim.api.nvim_set_keymap('n', '<Leader>e', ':Telescope git_files<CR>', { noremap 
 vim.api.nvim_set_keymap('n', '<Leader>f', ':Telescope find_files<CR>', { noremap = true, silent = true })
 -- Ctrl+p opens Telescope (no picker)
 vim.api.nvim_set_keymap('n', '<C-p>', ':Telescope find_pickers<CR>', { noremap = true, silent = true })
+
+local wkSuccess, whichKey = pcall(require, 'which-key')
+if not wkSuccess then
+	vim.notify("Something's not working with folke/which-key")
+	return
+end
+
+whichKey.event = "VeryLazy"
+	-- 	opts = {
+	-- 		-- your configuration comes here
+	-- 		-- or leave it empty to use the default settings
+	-- 		-- refer to the configuration section below
+	-- 	},
+whichKey.add(
+	{
+		"<leader>?",
+		function()
+			require("which-key").show({ global = false })
+		end,
+		desc = "Buffer Local Keymaps (which-key)",
+	}
+)
+

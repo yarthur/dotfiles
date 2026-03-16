@@ -15,24 +15,124 @@ local defaultOpts = { noremap = true, silent = true }
 set_keymap('n', '<Space>', '<NOP>', defaultOpts)
 vim.g.mapleader = ' '
 
--- Remove search Highlighting
-set_keymap('n', '<Leader>h', ':noh<CR>', defaultOpts)
+set_keymap(
+	'n',
+	'<Leader>h',
+	':noh<CR>',
+	{
+		noremap = true,
+		silent = true,
+		desc = 'Remove search [H]ighlighting.'
+	}
+)
 
--- Ctrl+(direction) to jump between splits
-set_keymap('n', '<C-h>', '<C-w>h', defaultOpts)
-set_keymap('n', '<C-j>', '<C-w>j', defaultOpts)
-set_keymap('n', '<C-k>', '<C-w>k', defaultOpts)
-set_keymap('n', '<C-l>', '<C-w>l', defaultOpts)
+set_keymap(
+	'n',
+	'<C-h>',
+	'<C-w>h',
+	{
+		noremap = true,
+		silent = true,
+		desc = 'Jump to the split to the left.'
+	}
+)
+
+set_keymap(
+	'n',
+	'<C-j>',
+	'<C-w>j',
+	{
+		noremap = true,
+		silent = true,
+		desc = 'Jump to the split below.'
+	}
+)
+
+set_keymap(
+	'n',
+	'<C-k>',
+	'<C-w>k',
+	{
+		noremap = true,
+		silent = true,
+		desc = 'Jump to the split above.'
+	}
+)
+
+set_keymap(
+	'n',
+	'<C-l>',
+	'<C-w>l',
+	{
+		noremap = true,
+		silent = true,
+		desc = 'Jump to the split to the right.'
+	}
+)
 
 -- Resize splits with arrows
-set_keymap('n', "<SC-Up>", ":resize -2<CR>", defaultOpts)
-set_keymap('n', "<SC-Down>", ":resize +2<CR>", defaultOpts)
-set_keymap('n', "<SC-Left>", ":vertical resize -2<CR>", defaultOpts)
-set_keymap('n', "<SC-Right>", ":vertical resize +2<CR>", defaultOpts)
+set_keymap(
+	'n',
+	"<SC-Up>",
+	":resize -2<CR>",
+	{
+		noremap = true,
+		silent = true,
+		desc = 'Resize split(s) 2 lines "up"/smaller.'
+	}
+)
+set_keymap(
+	'n',
+	"<SC-Down>",
+	":resize +2<CR>",
+	{
+		noremap = true,
+		silent = true,
+		desc = 'Resize split(s) 2 lines "down"/larger.'
+	}
+)
+set_keymap(
+	'n',
+	"<SC-Left>",
+	":vertical resize -2<CR>",
+	{
+		noremap = true,
+		silent = true,
+		desc = 'Vertically resize split(s) 2 lines "left"/smaller.'
+	}
+)
+set_keymap(
+	'n',
+	"<SC-Right>",
+	":vertical resize +2<CR>",
+	{
+		noremap = true,
+		silent = true,
+		desc = 'Vertically resize split(s) 2 lines "right"/larger.'
+	}
+)
 
 -- Indent forward/back in Visual mode
-set_keymap('v', '<', '<gv', defaultOpts)
-set_keymap('v', '>', '>gv', defaultOpts)
+set_keymap(
+	'v',
+	'<',
+	'<gv',
+	{
+		noremap = true,
+		silent = true,
+		desc = 'Indent back/shallower.'
+	}
+)
+-- set_keymap(
+-- 	'v',
+-- 	'>',
+-- 	'>gv',
+-- 	{
+-- 		noremap = true,
+-- 		silent = true,
+-- 		desc = 'Indent forward/deeper.'
+-- 	}
+-- )
 
 -- Move selected line(s) of text in visual mode
 set_keymap('x', 'J', ':move \'<-2<CR>gv-gv', defaultOpts)
