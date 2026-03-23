@@ -28,8 +28,4 @@ tsConfig.setup({
 	indent = {
 		enable = true,
 	},
-	rainbow = {
-		enable = true,
-	},
 })
-
