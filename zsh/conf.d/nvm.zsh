@@ -33,6 +33,7 @@ node() { __load_nvm; node "$@"; }
 npm()  { __load_nvm; npm  "$@"; }
 npx()  { __load_nvm; npx  "$@"; }
 nvm()  { __load_nvm; nvm  "$@"; }
+yarn() { __load_nvm; yarn "$@"; }
 
 # To enable auto-switching when changing directories, uncomment below.
 # autoload -Uz add-zsh-hook
