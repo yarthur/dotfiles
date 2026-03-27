@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+source "$DOTFILES_HOME/lib/loader.zsh"
+
+dotfiles_register_all_commands "$DOTFILES_HOME/bin/commands"
+
+if (( $# > 0 )); then
+  requested_command="$1"
+  shift
+else
+  requested_command="help"
+fi
+
+dotfiles_dispatch "$requested_command" "$@"
