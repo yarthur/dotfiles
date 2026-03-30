@@ -20,8 +20,8 @@ nvim/backups
 nvim/plugged
 nvim/undo
 
+# TMux
+tmux/plugins
+
 # We generate the terminfo file through the install script.
 *.terminfo
-
-# ZSH
-zsh/custom/plugins

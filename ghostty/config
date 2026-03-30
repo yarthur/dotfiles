@@ -1,0 +1,219 @@
+# The font families to use.
+# 
+# You can generate the list of valid values using the CLI:
+# 
+#     ghostty +list-fonts
+# 
+# This configuration can be repeated multiple times to specify preferred
+# fallback fonts when the requested codepoint is not available in the primary
+# font. This is particularly useful for multiple languages, symbolic fonts,
+# etc.
+# 
+# Notes on emoji specifically: On macOS, Ghostty by default will always use
+# Apple Color Emoji and on Linux will always use Noto Emoji. You can
+# override this behavior by specifying a font family here that contains
+# emoji glyphs.
+# 
+# The specific styles (bold, italic, bold italic) do not need to be
+# explicitly set. If a style is not set, then the regular style (font-family)
+# will be searched for stylistic variants. If a stylistic variant is not
+# found, Ghostty will use the regular style. This prevents falling back to a
+# different font family just to get a style such as bold. This also applies
+# if you explicitly specify a font family for a style. For example, if you
+# set `font-family-bold = FooBar` and "FooBar" cannot be found, Ghostty will
+# use whatever font is set for `font-family` for the bold style.
+# 
+# Finally, some styles may be synthesized if they are not supported.
+# For example, if a font does not have an italic style and no alternative
+# italic font is specified, Ghostty will synthesize an italic style by
+# applying a slant to the regular style. If you want to disable these
+# synthesized styles then you can use the `font-style` configurations
+# as documented below.
+# 
+# You can disable styles completely by using the `font-style` set of
+# configurations. See the documentation for `font-style` for more information.
+# 
+# If you want to overwrite a previous set value rather than append a fallback,
+# specify the value as `""` (empty string) to reset the list and then set the
+# new values. For example:
+# 
+#     font-family = ""
+#     font-family = "My Favorite Font"
+# 
+# Setting any of these as CLI arguments will automatically clear the
+# values set in configuration files so you don't need to specify
+# `--font-family=""` before setting a new value. You only need to specify
+# this within config files if you want to clear previously set values in
+# configuration files or on the CLI if you want to clear values set on the
+# CLI.
+font-family = Fira Nerd Font Mono
+
+font-family-bold = 
+font-family-italic = 
+font-family-bold-italic = 
+# Control whether Ghostty should synthesize a style if the requested style is
+# not available in the specified font-family.
+# 
+# Ghostty can synthesize bold, italic, and bold italic styles if the font
+# does not have a specific style. For bold, this is done by drawing an
+# outline around the glyph of varying thickness. For italic, this is done by
+# applying a slant to the glyph. For bold italic, both of these are applied.
+# 
+# Synthetic styles are not perfect and will generally not look as good
+# as a font that has the style natively. However, they are useful to
+# provide styled text when the font does not have the style.
+# 
+# Set this to "false" or "true" to disable or enable synthetic styles
+# completely. You can disable specific styles using "no-bold", "no-italic",
+# and "no-bold-italic". You can disable multiple styles by separating them
+# with a comma. For example, "no-bold,no-italic".
+# 
+# Available style keys are: `bold`, `italic`, `bold-italic`.
+# 
+# If synthetic styles are disabled, then the regular style will be used
+# instead if the requested style is not available. If the font has the
+# requested style, then the font will be used as-is since the style is
+# not synthetic.
+# 
+# Warning: An easy mistake is to disable `bold` or `italic` but not
+# `bold-italic`. Disabling only `bold` or `italic` will NOT disable either
+# in the `bold-italic` style. If you want to disable `bold-italic`, you must
+# explicitly disable it. You cannot partially disable `bold-italic`.
+# 
+# By default, synthetic styles are enabled.
+font-synthetic-style = false
+
+# Font size in points. This value can be a non-integer and the nearest integer
+# pixel size will be selected. If you have a high dpi display where 1pt = 2px
+# then you can get an odd numbered pixel size by specifying a half point.
+# 
+# For example, 13.5pt @ 2px/pt = 27px
+# 
+# Changing this configuration at runtime will only affect existing
+# terminals that have NOT manually adjusted their font size in some way
+# (e.g. increased or decreased the font size). Terminals that have manually
+# adjusted their font size will retain their manually adjusted size.
+# Otherwise, the font size of existing terminals will be updated on
+# reload.
+# 
+# On Linux with GTK, font size is scaled according to both display-wide and
+# text-specific scaling factors, which are often managed by your desktop
+# environment (e.g. the GNOME display scale and large text settings).
+font-size = 16
+
+# A theme to use. This can be a built-in theme name, a custom theme
+# name, or an absolute path to a custom theme file. Ghostty also supports
+# specifying a different theme to use for light and dark mode. Each
+# option is documented below.
+# 
+# If the theme is an absolute pathname, Ghostty will attempt to load that
+# file as a theme. If that file does not exist or is inaccessible, an error
+# will be logged and no other directories will be searched.
+# 
+# If the theme is not an absolute pathname, two different directories will be
+# searched for a file name that matches the theme. This is case sensitive on
+# systems with case-sensitive filesystems. It is an error for a theme name to
+# include path separators unless it is an absolute pathname.
+# 
+# The first directory is the `themes` subdirectory of your Ghostty
+# configuration directory. This is `$XDG_CONFIG_HOME/ghostty/themes` or
+# `~/.config/ghostty/themes`.
+# 
+# The second directory is the `themes` subdirectory of the Ghostty resources
+# directory. Ghostty ships with a multitude of themes that will be installed
+# into this directory. On macOS, this list is in the
+# `Ghostty.app/Contents/Resources/ghostty/themes` directory. On Linux, this
+# list is in the `share/ghostty/themes` directory (wherever you installed the
+# Ghostty "share" directory.
+# 
+# To see a list of available themes, run `ghostty +list-themes`.
+# 
+# A theme file is simply another Ghostty configuration file. They share
+# the same syntax and same configuration options. A theme can set any valid
+# configuration option so please do not use a theme file from an untrusted
+# source. The built-in themes are audited to only set safe configuration
+# options.
+# 
+# Some options cannot be set within theme files. The reason these are not
+# supported should be self-evident. A theme file cannot set `theme` or
+# `config-file`. At the time of writing this, Ghostty will not show any
+# warnings or errors if you set these options in a theme file but they will
+# be silently ignored.
+# 
+# Any additional colors specified via background, foreground, palette, etc.
+# will override the colors specified in the theme.
+# 
+# To specify a different theme for light and dark mode, use the following
+# syntax: `light:theme-name,dark:theme-name`. For example:
+# `light:Rose Pine Dawn,dark:Rose Pine`. Whitespace around all values are
+# trimmed and order of light and dark does not matter. Both light and dark
+# must be specified in this form. In this form, the theme used will be
+# based on the current desktop environment theme.
+# 
+# There are some known bugs with light/dark mode theming. These will
+# be fixed in a future update:
+# 
+#   - macOS: titlebar tabs style is not updated when switching themes.
+theme = light:Farmhouse Light,dark:Solarized Dark Higher Contrast
+# theme = Solarized Dark Higher Contrast
+
+# The minimum contrast ratio between the foreground and background colors.
+# The contrast ratio is a value between 1 and 21. A value of 1 allows for no
+# contrast (e.g. black on black). This value is the contrast ratio as defined
+# by the [WCAG 2.0 specification](https://www.w3.org/TR/WCAG20/).
+# 
+# If you want to avoid invisible text (same color as background), a value of
+# 1.1 is a good value. If you want to avoid text that is difficult to read, a
+# value of 3 or higher is a good value. The higher the value, the more likely
+# that text will become black or white.
+# 
+# This value does not apply to Emoji or images.
+minimum-contrast = 3
+
+# Controls when command finished notifications are sent. There are
+# three options:
+# 
+# * `never` - Never send notifications (the default).
+# * `unfocused` - Only send notifications if the surface that the command is
+#   running in is not focused.
+# * `always` - Always send notifications.
+# 
+# Command finished notifications requires that either shell integration is
+# enabled, or that your shell sends OSC 133 escape sequences to mark the start
+# and end of commands.
+# 
+# On GTK, there is a context menu item that will enable command finished
+# notifications for a single command, overriding the `never` and `unfocused`
+# options.
+# 
+# Available since 1.3.0.
+notify-on-command-finish = unfocused
+
+# If command finished notifications are enabled, this controls how the user is
+# notified.
+# 
+# Available options:
+# 
+# * `bell` - enabled by default
+# * `notify` - disabled by default
+# 
+# Options can be combined by listing them as a comma separated list. Options
+# can be negated by prefixing them with `no-`. For example `no-bell,notify`.
+# 
+# Available since 1.3.0.
+notify-on-command-finish-action = bell,notify
+
+# If true, when there are multiple split panes, the mouse selects the pane
+# that is focused. This only applies to the currently focused window; e.g.
+# mousing over a split in an unfocused window will not focus that split
+# and bring the window to front.
+# 
+# Default is false.
+focus-follows-mouse = true
+
+# This controls whether an initial window is created when Ghostty
+# is run. Note that if `quit-after-last-window-closed` is `true` and
+# `quit-after-last-window-closed-delay` is set, setting `initial-window` to
+# `false` will mean that Ghostty will quit after the configured delay if no
+# window is ever created. Only implemented on Linux and macOS.
+initial-window = true

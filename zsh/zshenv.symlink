@@ -1,2 +1,17 @@
+# Ensure XDG base dirs exist (XDG spec says default is ~/.config if unset)
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+
+# Dotfiles home
+export DOTFILES_HOME="$XDG_CONFIG_HOME/dotfiles"
+
+# Tell Zsh where ALL its config lives
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+
+export EDITOR="nvim"
+export PAGER="bat"
+
+PATH="$HOME/.local/bin:$PATH"
 PATH="/usr/local/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
