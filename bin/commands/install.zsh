@@ -51,7 +51,7 @@ main() {
 				break
 				;;   # end of options
 			-*)
-				print -u2 "install: unknown option: $1 (try --help)"
+				print -u2 "dotfiles install: unknown option: $1 (try --help)"
 				return 2
 				;;
 			*) 
