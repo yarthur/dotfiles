@@ -31,8 +31,9 @@ print_dry_run() {
 run_command() {
 	if [[ -n "${DRY_RUN:-}" ]]; then
 		print_dry_run "$@"
+		print ""
 	else
-		zsh "$@"
+		"$@"
 	fi
 }
 

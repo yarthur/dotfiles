@@ -71,6 +71,9 @@ mkdir -p "$ZSH_SESSION_DIR"
 ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-${ZSH_VERSION}"
 mkdir -p "${ZSH_COMPDUMP:h}"
 
+# Add autocompletions for this project.
+fpath+=("$XDG_CACHE_HOME/dotfiles")
+
 autoload -Uz compinit
 zlog_info "compinit start"
 ztime compinit -C -d "$ZSH_COMPDUMP"
