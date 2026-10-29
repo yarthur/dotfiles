@@ -16,8 +16,7 @@ alias globa='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 alias treadme='touch README.md'
 
 # Run Docker Locally
-alias rdl8='docker run -v `pwd`:/var/www -it --rm repo.mutualofomaha.com:5003/com.mutualofomaha.mac/base:8.0'
 alias rdl='docker run -v `pwd`:/var/www -it --rm repo.mutualofomaha.com:5003/com.mutualofomaha.mac/base:8.2'
-#
+
 # Docker Kill (well... Stop) All
 alias dka='docker stop $(docker ps -q)'
