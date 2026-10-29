@@ -1,4 +1,10 @@
 # dotfiles:desc Install configuration(s).
+
+if [[ -z "${DOTFILES_HOME:-}" ]]; then
+	script_dir="${0:A:h}"
+	source "$script_dir/../../zsh/zshenv.symlink"
+fi
+
 source "$DOTFILES_HOME/lib/args.zsh"
 source "$DOTFILES_HOME/lib/command-helpers.zsh"
 
@@ -85,13 +91,14 @@ main() {
 		do
 			$src
 		done
-return 0
+
+		return 0
 	fi
 
 	src="$DOTFILES_HOME/$1/$install_script_filename"
 	shift || true
 
-	_run "$src" "$@"
+	zsh "$src"
 }
 
 _run() {

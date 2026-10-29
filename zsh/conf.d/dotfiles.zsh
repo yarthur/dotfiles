@@ -10,4 +10,6 @@ if [[ ! -r $dotfiles_cache/.up2date ]]; then
   touch $dotfiles_cache/.up2date
 fi
 
+# Enable Prompt Substitution
+setopt PROMPT_SUBST
 

@@ -7,12 +7,12 @@ print "Zsh"
 print "################################################################################"
 print ""
 
-antidote_dir="$ZDOTDIR/antidote"
+local antidote_home="${XDG_DATA_HOME:-$HOME/.local/share}/antidote"
 plugins_txt="$ZDOTDIR/plugins.txt"
 plugins_zsh="$XDG_CACHE_HOME/antidote/plugins.zsh"
 
 print "Source Antidote."
-run_command source "$antidote_dir/antidote.zsh"
+run_command source "$antidote_home/antidote.zsh"
 
 print "Clone bundle(s) and generate the static load script."
 antidote bundle <"$plugins_txt" >"$plugins_zsh"

@@ -1,5 +1,13 @@
 #!/usr/bin/env zsh
 source "$DOTFILES_HOME/lib/command-helpers.zsh"
+source "$DOTFILES_HOME/lib/rust-helpers.zsh"
+
+install_bat() {
+	emulate -L zsh
+	set -euo pipefail
+
+	install_via_rust bat
+}
 
 print ""
 print ""
@@ -16,3 +24,5 @@ if [[ ! -h $XDG_CONFIG_HOME/bat ]]; then
 	print "Linking managed config."
 	run_command ln -s "$DOTFILES_HOME/bat" "$XDG_CONFIG_HOME/bat"
 fi
+
+run_command "install_bat"
