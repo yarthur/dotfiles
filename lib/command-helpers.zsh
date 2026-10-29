@@ -8,7 +8,7 @@ enable_dry_run() {
 	# message. Otherwise, there's nothing more we need to do.
 	if [[ ! -n "${DRY_RUN:-}" ]]; then
 		export DRY_RUN=1
-		print "⚠️  DRY‑RUN MODE ENABLED"
+		print -u2 "⚠️  DRY‑RUN MODE ENABLED"
 	fi
 }
 
@@ -19,7 +19,7 @@ enable_dry_run() {
 # 	commands are (or, at least, should be) in DRY RUN mode.
 ################################################################################
 print_dry_run() {
-	print "[DRY RUN]: $@"
+	print -u2 "[DRY RUN]: $@"
 }
 
 
@@ -37,3 +37,37 @@ run_command() {
 	fi
 }
 
+
+################################################################################
+# Get Latest Release tag from GitHub
+################################################################################
+github_latest_release() {
+	local owner="$1"
+	local repo="$2"
+	local url="https://api.github.com/repos/${owner}/${repo}/releases/latest"
+
+	local version
+
+	# Prefer JQ
+	if command -v jq >/dev/null 2>&1; then
+		version="$(
+			curl -fsSL "$url" |
+			jq -r '.tag_name'
+		)"
+	else
+	# Otherwise, sed
+		version="$(
+			curl -fsSL "$url" |
+			sed -n 's/.*"tag_name": "\([^"]*\)".*/\1/p'
+		)"
+	fi
+
+	[[ -n "$version" ]] || {
+		print -u2 "Unable to determine $repo version"
+		return 1
+	}
+
+	print -u2 "Latest $repo version: $version"
+
+	print -- "$version"
+}

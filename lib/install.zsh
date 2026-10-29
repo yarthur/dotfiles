@@ -3,9 +3,10 @@ source "$DOTFILES_HOME/lib/command-helpers.zsh"
 
 print ""
 print ""
-print "TMux"
+print "Dotfiles"
 print "################################################################################"
 print ""
 
-print "Update TPM-Redux and associated plugins."
-run_command $DOTFILES_HOME/tmux/plugins/tpm-redux/bin/update
+print "Adding dotfiles to $XDG_BIN_HOME"
+
+run_command "ln" "-sf" "$DOTFILES_HOME/bin/dotfiles" "$XDG_BIN_HOME"

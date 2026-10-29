@@ -3,6 +3,10 @@ export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
+# Not part of the XDG spec, but used throughout:
+export XDG_OPT_HOME="${XDG_OPT_HOME:-$HOME/.local/opt}"
+export XDG_BIN_HOME="${XDG_BIN_HOME:-$HOME/.local/bin}"
+
 # Dotfiles home
 export DOTFILES_HOME="$XDG_CONFIG_HOME/dotfiles"
 
@@ -12,6 +16,7 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export EDITOR="nvim"
 export PAGER="bat"
 
-PATH="$HOME/.local/bin:$PATH"
+PATH="$XDG_BIN_HOME:$PATH"
 PATH="/usr/local/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
+. "/Users/john.arthur/.local/share/cargo/env"

@@ -1,5 +1,14 @@
 #!/usr/bin/env zsh
 
+# Get directory of this script
+SCRIPT_DIR=${${(%):-%N}:A:h}
+
+print $SCRIPT_DIR
+
+[ -n "$DOTFILES_HOME" ] || source "$SCRIPT_DIR/../lib/env.zsh"
+
+
+
 set -euo pipefail
 
 source "$DOTFILES_HOME/lib/loader.zsh"
