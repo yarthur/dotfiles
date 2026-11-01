@@ -1,16 +1,8 @@
-ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-${ZSH_VERSION}"
-mkdir -p "${ZSH_COMPDUMP:h}"
-
 # Add project completions
-fpath+=("$XDG_CACHE_HOME/dotfiles")
+fpath+=("$XDG_CONFIG_HOME/zsh/completions")
 
-autoload -Uz compinit
+# Interactive completion menu
+zstyle ':completion:*' menu select
 
-zlog_info "compinit start"
-ztime compinit -C -d "$ZSH_COMPDUMP"
-zlog_info "compinit end"
-
-if [[ -f "$ZSH_COMPDUMP" && ! -f "$ZSH_COMPDUMP.zwc" ]]; then
-  zlog_info "compiling compdump"
-  zcompile "$ZSH_COMPDUMP"
-fi
+#Case-insensitive matching
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'

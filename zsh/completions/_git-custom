@@ -1,0 +1,47 @@
+#compdef git
+
+_git-custom() {
+  # Only intercept `git push`
+  if [[ "$words[2]" == "push" ]]; then
+    local delete=0
+    local remote=""
+    local i
+
+    # Examine arguments before the word currently being completed.
+    for (( i = 3; i < CURRENT; i++ )); do
+      case "${words[i]}" in
+        -d|--delete)
+          delete=1
+          ;;
+
+        -*)
+          # Other push option. Ignore it here and let _git
+          # handle normal completion behavior.
+          ;;
+
+        *)
+          if (( delete )) && [[ -z "$remote" ]]; then
+            remote="${words[i]}"
+          fi
+          ;;
+      esac
+    done
+
+    if (( delete )) && [[ -n "$remote" ]]; then
+      local -a branches
+
+      branches=(${(f)"$(
+        git for-each-ref \
+          --format='%(refname:strip=3)' \
+          "refs/remotes/${remote}/" 2>/dev/null
+      )"})
+
+      branches=(${branches:#HEAD})
+
+      _describe 'remote branch' branches
+      return
+    fi
+  fi
+
+  _git "$@"
+}
